@@ -9,3 +9,10 @@
 | Agent-Skills-for-Context-Engineering | https://github.com/muratcankoylan/Agent-Skills-for-Context-Engineering | 6dbe1a1 |
 
 Copiés tels quels depuis les dépôts publics ci-dessus (licences incluses). Pour mettre à jour : re-cloner et recopier.
+
+## Ajout 2026-09-23
+| Skill | Source | Commit |
+|---|---|---|
+| agent-reach | https://github.com/Panniantong/Agent-Reach | a19a171 |
+| just-scrape | https://github.com/ScrapeGraphAI/just-scrape | a3d179f |
+| strix (5 skills) | https://github.com/usestrix/strix | 56f7d45 |
