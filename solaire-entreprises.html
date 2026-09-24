@@ -52,19 +52,32 @@ a{color:inherit}
 .nav a{text-decoration:none}.nav a:hover{color:var(--ink)}
 .bar .btn{padding:.7rem 1.05rem;font-size:.92rem}
 
-/* hero */
-.hero{position:relative;min-height:100svh;display:grid;align-items:center;overflow:hidden;background:#1a2a22}
-.hero .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:68% 50%}
-.hero .scrim{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(246,248,244,.1) 0%,rgba(246,248,244,0) 22%,rgba(246,248,244,.9) 46%,rgba(246,248,244,.98) 100%)}
-.hero .copy{position:relative;padding:calc(var(--hdr) + 5rem) 0 3.5rem}
-.hero .inner{display:grid;gap:1.1rem;justify-items:start;max-width:640px}
-.hero .lead{color:#3E4F47}
-.tag{display:inline-flex;align-items:center;gap:.55rem;padding:.5rem .9rem;border:1px solid rgba(27,122,74,.35);background:rgba(255,255,255,.82);backdrop-filter:blur(8px);border-radius:999px;font:600 .85rem/1.2 var(--body);color:var(--green)}
+/* hero : photo plein cadre, texte blanc */
+.hero{position:relative;min-height:100svh;display:grid;align-items:end;overflow:hidden;background:#1a2a22;color:#fff}
+.hero .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 45%}
+.hero .scrim{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(10,26,18,.35) 0%,rgba(10,26,18,.05) 30%,rgba(10,26,18,.55) 58%,rgba(10,26,18,.92) 100%)}
+.hero .copy{position:relative;padding:calc(var(--hdr) + 6rem) 0 3.5rem}
+.hero .inner{display:grid;gap:1.1rem;justify-items:start;max-width:720px}
+.hero h1{font-size:clamp(2.3rem,5vw,4rem);color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.35)}
+.hero .lead{color:#E3EDE6;font-size:clamp(1.08rem,1.4vw,1.25rem);max-width:52ch}
+.tag{display:inline-flex;align-items:center;gap:.55rem;padding:.5rem .9rem;border:1px solid rgba(255,255,255,.45);background:rgba(255,255,255,.14);backdrop-filter:blur(8px);border-radius:999px;font:600 .85rem/1.2 var(--body);color:#fff}
+.limited .tag{border-color:rgba(27,122,74,.35);background:rgba(255,255,255,.82);color:var(--green)}
 .actions{display:flex;flex-wrap:wrap;gap:.7rem}
-.hero .quick{display:flex;flex-wrap:wrap;gap:.5rem 1.3rem;font-size:.95rem;color:#3E4F47}
+.hero .quick{display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;font-size:.98rem;color:#DDE8E1}
 .hero .quick span{display:inline-flex;align-items:center;gap:.45rem;font-weight:600}
-.hero .quick b{color:var(--green);font-family:var(--display);font-weight:700}
-.hero .btn.sec{background:rgba(255,255,255,.9)}
+.hero .quick b{color:#7EE2A8;font-family:var(--display);font-weight:700}
+.hero .btn.sec{background:rgba(255,255,255,.92);color:var(--ink);border-color:transparent}
+.bar:not(.solid) .brand{color:#fff}
+.bar:not(.solid) .nav{color:#DDE8E1}.bar:not(.solid) .nav a:hover{color:#fff}
+
+/* process */
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;counter-reset:st}
+.steps li{background:var(--card);padding:1.4rem 1.3rem;display:grid;gap:.45rem;align-content:start;position:relative}
+.steps li::before{counter-increment:st;content:counter(st);width:34px;height:34px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font:700 .95rem/1 var(--display)}
+.steps .when{font:600 .82rem/1.3 var(--body);color:var(--green);text-transform:uppercase;letter-spacing:.04em}
+.steps b{font:600 1.08rem/1.3 var(--display)}
+.steps p{color:var(--mute);font-size:.95rem}
+.steps li.go{background:linear-gradient(180deg,var(--soft),var(--card))}
 
 /* invoice callout */
 .why{display:grid;gap:1rem;background:var(--soft);border:1px solid rgba(27,122,74,.25);border-radius:var(--r);padding:1.5rem;margin-top:1.4rem}
@@ -227,6 +240,7 @@ footer .credits{color:#8FA79A;max-width:90ch;line-height:1.5}
 }
 @media (min-width:720px){
   .adv{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:repeat(2,1fr)}
   .band{grid-template-columns:repeat(4,1fr)}
   .bento{grid-template-columns:repeat(2,1fr)}
   .ph{aspect-ratio:16/10}
@@ -237,8 +251,10 @@ footer .credits{color:#8FA79A;max-width:90ch;line-height:1.5}
   .dock{display:none}
   footer{padding-bottom:2rem}
   .adv{grid-template-columns:repeat(4,1fr)}
-  .hero .scrim{background:linear-gradient(90deg,rgba(246,248,244,.98) 0%,rgba(246,248,244,.94) 32%,rgba(246,248,244,.6) 50%,rgba(246,248,244,0) 68%)}
-  .hero .copy{padding:calc(var(--hdr) + 4rem) 0 4rem}
+  .hero .scrim{background:linear-gradient(90deg,rgba(10,26,18,.82) 0%,rgba(10,26,18,.55) 40%,rgba(10,26,18,.1) 70%),linear-gradient(180deg,rgba(10,26,18,.3),rgba(10,26,18,0) 30%,rgba(10,26,18,.5) 100%)}
+  .hero{align-items:center}
+  .hero .copy{padding:calc(var(--hdr) + 3rem) 0 4rem}
+  .steps{grid-template-columns:repeat(5,1fr)}
   .guar .wrap{grid-template-columns:1fr 1fr;gap:4rem}
   .panel3d .wrap{grid-template-columns:1.15fr .85fr;gap:3rem}
   .sim{grid-template-columns:.8fr 1.2fr;gap:3rem}
@@ -257,7 +273,7 @@ footer .credits{color:#8FA79A;max-width:90ch;line-height:1.5}
     Solaire Entreprises
   </a>
   <nav class="nav" aria-label="Sections">
-    <a href="#avantages">Avantages</a><a href="#sites">Installations</a><a href="#centrale">Le panneau</a><a href="#simulateur">Simulateur</a><a href="#eligibilite">Éligibilité</a>
+    <a href="#parcours">Comment ça se passe</a><a href="#avantages">Avantages</a><a href="#sites">Installations</a><a href="#simulateur">Simulateur</a><a href="#eligibilite">Éligibilité</a>
   </nav>
   <a class="btn pri" href="#contact">Joindre ma facture</a>
 </div></header>
@@ -271,7 +287,7 @@ footer .credits{color:#8FA79A;max-width:90ch;line-height:1.5}
   <div class="copy"><div class="wrap"><div class="inner">
     <span class="tag">Programme réservé aux entreprises à haute consommation d'énergie</span>
     <h1>Des panneaux solaires sur votre toiture. Zéro euro à avancer.</h1>
-    <p class="lead">L'installation est financée à 100 %. Votre facture d'électricité baisse dès le premier mois, et le gain est garanti par contrat.</p>
+    <p class="lead">L'installation est financée à 100 %. Votre facture d'électricité baisse dès le premier mois, et le gain est garanti par contrat. Envoyez votre facture, on vous rappelle dans la journée.</p>
     <div class="quick">
       <span><b>0 €</b> à avancer</span>
       <span><b>Facture en baisse</b> dès le 1er mois</span>
@@ -282,6 +298,23 @@ footer .credits{color:#8FA79A;max-width:90ch;line-height:1.5}
       <a class="btn sec" href="#eligibilite">Vérifier mon éligibilité</a>
     </div>
   </div></div></div>
+</section>
+
+<!-- PROCESS -->
+<section class="sec" id="parcours">
+  <div class="wrap">
+    <div class="head">
+      <h2>De votre facture à la signature&nbsp;: environ quatre jours.</h2>
+      <p class="lead">Vous n'avez qu'une chose à faire : nous envoyer votre facture d'électricité. Le reste, c'est nous.</p>
+    </div>
+    <ol class="steps">
+      <li class="go"><span class="when">Aujourd'hui</span><b>Vous joignez votre facture</b><p>Sans engagement. C'est la seule pièce dont nous avons besoin pour chiffrer votre gain.</p></li>
+      <li><span class="when">Dans la journée</span><b>On vous rappelle</b><p>Un conseiller vous appelle le jour même pour comprendre votre site et fixer la visite.</p></li>
+      <li><span class="when">Sous 48 h</span><b>Visite technique sur place</b><p>Relevé de la configuration des lieux et étude des différentes façons d'installer.</p></li>
+      <li><span class="when">48 h après</span><b>Audit du bureau d'étude</b><p>Dimensionnement, production attendue et gain net calculé sur votre facture réelle.</p></li>
+      <li><span class="when">Puis</span><b>Contrat signé, pose planifiée</b><p>Le gain est écrit noir sur blanc. La pose se fait sans arrêter votre activité.</p></li>
+    </ol>
+  </div>
 </section>
 
 <!-- ADVANTAGES -->
@@ -305,7 +338,7 @@ footer .credits{color:#8FA79A;max-width:90ch;line-height:1.5}
       <div><b class="num">0<small>€</small></b><span>à avancer</span></div>
       <div><b class="num">15<small>ans</small></b><span>d'abonnement tout compris</span></div>
       <div><b class="num">30<small>ans</small></b><span>de garantie panneaux</span></div>
-      <div><b class="num">48<small>h</small></b><span>pour la visite d'un conseiller</span></div>
+      <div><b class="num">48<small>h</small></b><span>pour la visite technique</span></div>
     </div>
     <div class="why">
       <h3>Tout commence par votre facture d'électricité.</h3>
@@ -441,10 +474,10 @@ footer .credits{color:#8FA79A;max-width:90ch;line-height:1.5}
     <div class="head"><h2>Les questions qu'on nous pose.</h2></div>
     <div class="list">
       <details><summary>Qui finance l'installation ?</summary><p>Un fonds d'investissement dédié à la transition énergétique des entreprises. C'est lui qui achète et fait poser la centrale. Vous ne réglez qu'un abonnement, inférieur à vos économies.</p></details>
-      <details><summary>Qu'est-ce que je paie, concrètement ?</summary><p>Rien à l'installation. Un abonnement mensuel pendant 15 ans, qui couvre le matériel, la pose, l'exploitation et la maintenance. La différence entre vos économies et l'abonnement, le gain net, est garantie au contrat.</p></details>
       <details><summary>Et si l'économie promise n'est pas réalisée ?</summary><p>Nous remboursons la différence. L'engagement porte sur votre facture, dès le premier mois suivant la mise en service.</p></details>
       <details><summary>Que se passe-t-il après les 15 ans ?</summary><p>L'abonnement s'arrête, la centrale continue. Les panneaux sont garantis 30 ans : de l'année 16 à l'année 30, toute la production est pour vous, sans mensualité.</p></details>
       <details><summary>Dois-je changer de fournisseur, arrêter mon activité ?</summary><p>Non aux deux. Vous gardez votre contrat d'électricité, et la pose se fait sur la toiture, raccordement planifié avec vous en dehors de vos pics d'activité.</p></details>
+      <details><summary>Envoyer ma facture m'engage-t-il ?</summary><p>Non. Elle sert uniquement à chiffrer votre gain. Vous décidez après avoir reçu le chiffrage écrit du bureau d'étude.</p></details>
     </div>
   </div>
 </section>
@@ -454,7 +487,7 @@ footer .credits{color:#8FA79A;max-width:90ch;line-height:1.5}
   <div class="wrap">
     <div>
       <h2>Joignez votre facture, on fait le reste.</h2>
-      <p class="lead" style="margin-top:1rem">C'est la seule pièce dont nous avons besoin. Un conseiller vous rappelle au créneau choisi, se déplace sous 48 h et vous remet un chiffrage écrit et garanti. Envoyer votre facture ne vous engage à rien.</p>
+      <p class="lead" style="margin-top:1rem">C'est la seule pièce dont nous avons besoin. Un conseiller vous rappelle dans la journée, se déplace sous 48 h, et le bureau d'étude vous remet un chiffrage garanti sous 48 h. Envoyer votre facture ne vous engage à rien.</p>
       <ul class="promise">
         <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="rgba(255,255,255,.14)"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Étude gratuite à partir de votre facture</span></li>
         <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="rgba(255,255,255,.14)"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Gain net chiffré et garanti au contrat</span></li>
@@ -489,7 +522,7 @@ footer .credits{color:#8FA79A;max-width:90ch;line-height:1.5}
       </form>
       <div class="done" id="done" hidden>
         <h3>Votre demande est prête</h3>
-        <p style="color:var(--mute)">Transmettez ce récapitulatif et votre facture à votre conseiller : il vous rappelle au créneau choisi et planifie la visite sous 48 h.</p>
+        <p style="color:var(--mute)">Transmettez ce récapitulatif et votre facture à votre conseiller : il vous rappelle dans la journée et planifie la visite sous 48 h.</p>
         <pre id="summary"></pre>
         <div class="actions"><button class="btn pri" type="button" id="copy">Copier ma demande</button><button class="btn sec" type="button" id="edit">Modifier</button></div>
       </div>
