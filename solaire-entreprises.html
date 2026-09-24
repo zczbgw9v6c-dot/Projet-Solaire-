@@ -1,374 +1,425 @@
+<!doctype html>
+<html lang="fr">
+<head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>ASL Consulting</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ASL Consulting Abonnement solaire</title>
 <meta name="description" content="La première solution d'abonnement solaire pour les collectivités et locaux commerciaux. Sans apport, sans investissement, sans crédit bancaire.">
-<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Source+Sans+3:wght@400;600&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/usine.jpg">
 <style>
+/* Tokens. Un accent (orange ASL), une échelle de rayons : boutons pill, blocs 18px, champs 10px. */
 :root{
-  color-scheme:light;
-  --bg:#FFFFFF; --bg2:#FBF7F3; --card:#FFFFFF; --soft:#FFF0E6; --soft2:#FFF7F1;
-  --ink:#1F2328; --mute:#5B6168; --dim:#8A9096; --line:rgba(31,35,40,.12); --line2:rgba(31,35,40,.22);
-  --or:#F25C05; --or2:#FF7A2A; --deep:#26201B;
-  --display:"Outfit",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --body:"Source Sans 3",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  --hdr:68px; --gut:max(18px,4vw); --max:1180px; --r:18px;
-  --shadow:0 24px 50px -30px rgba(38,32,27,.35);
-  --ease:cubic-bezier(.2,.8,.2,1);
+  --bg:#F6F6F4;--card:#FFFFFF;--ink:#1B1C1A;--mute:#5A5E5C;--dim:#8A8E8B;--line:#E4E5E1;--line2:#CFD1CC;
+  --or:#F25C05;--or-text:#C24A00;--or-soft:#FFF1E8;--or-soft2:#FFE3D2;--deep:#1F1A16;--deep2:#2B241E;
+  --font:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --r:18px;--hdr:68px;--wrap:1240px;
+  --shadow:0 24px 50px -30px rgba(27,28,26,.28);
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#141516;--card:#1E1F21;--ink:#F1F1EE;--mute:#B4B7B3;--dim:#7F827F;--line:#2C2E2F;--line2:#3B3E3F;
+    --or-text:#FF8A47;--or-soft:#2B1E15;--or-soft2:#3A2519;--deep:#0F0D0B;--deep2:#1A1613;
+    --shadow:0 24px 50px -30px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141516;--card:#1E1F21;--ink:#F1F1EE;--mute:#B4B7B3;--dim:#7F827F;--line:#2C2E2F;--line2:#3B3E3F;
+  --or-text:#FF8A47;--or-soft:#2B1E15;--or-soft2:#3A2519;--deep:#0F0D0B;--deep2:#1A1613;
+  --shadow:0 24px 50px -30px rgba(0,0,0,.7);
 }
 *,*::before,*::after{box-sizing:border-box}
-[hidden]{display:none!important}
-html{scroll-behavior:smooth;scroll-padding-top:calc(var(--hdr) + 10px)}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:clip}
-img,canvas,svg{display:block;max-width:100%}
-h1,h2,h3{margin:0;font-family:var(--display);font-weight:700;letter-spacing:-.02em;line-height:1.06;text-wrap:balance}
-h1{font-size:clamp(1.9rem,4.4vw,3.6rem);font-weight:800}
-h2{font-size:clamp(1.7rem,3.4vw,2.7rem)}
-h2 em,h3 em{font-style:normal;color:var(--or)}
-h3{font-size:1.12rem;line-height:1.25;font-weight:600}
-p{margin:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.02rem/1.6 var(--font);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
 a{color:inherit}
-ul,ol{margin:0;padding:0;list-style:none}
-.wrap{width:100%;max-width:var(--max);margin-inline:auto;padding-inline:var(--gut)}
-.lead{color:var(--mute);font-size:clamp(1.05rem,1.35vw,1.2rem);max-width:58ch}
-.sec{padding-block:clamp(3.2rem,6.5vw,5rem)}
-.sec.alt{background:var(--bg2)}
-.head{display:grid;gap:.8rem;max-width:60rem;margin-bottom:2rem}
-:is(a,button,input,select,summary,textarea):focus-visible{outline:3px solid var(--or2);outline-offset:3px}
+h1,h2,h3{margin:0;letter-spacing:-.025em;line-height:1.08;font-weight:700}
+h1{font-size:clamp(1.9rem,3.5vw,2.95rem);letter-spacing:-.035em;line-height:1.06}
+h2{font-size:clamp(1.7rem,3.4vw,2.6rem)}
+h3{font-size:1.1rem;letter-spacing:-.01em;line-height:1.3}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+.wrap{width:min(var(--wrap),100% - 32px);margin-inline:auto}
+section{padding-block:clamp(4rem,8vw,6.5rem)}
+.lead{color:var(--mute);font-size:clamp(1.05rem,1.4vw,1.2rem);max-width:60ch;line-height:1.55}
+.head{display:grid;gap:1rem;max-width:62ch;margin-bottom:clamp(2rem,4vw,3rem)}
+em{font-style:normal;color:var(--or-text)}
+.ic{width:24px;height:24px;stroke-width:1.75}
+:focus-visible{outline:3px solid var(--or);outline-offset:3px;border-radius:6px}
 
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;font:600 1rem/1 var(--body);padding:1rem 1.45rem;border-radius:999px;border:1px solid transparent;cursor:pointer;text-decoration:none;white-space:nowrap;transition:transform .25s var(--ease),background .2s,border-color .2s,box-shadow .25s}
-.btn:hover{transform:translateY(-2px)}
-.btn:active{transform:translateY(0) scale(.98)}
-.btn.pri{background:var(--or);color:#fff;box-shadow:0 12px 26px -14px rgba(242,92,5,.9)}
-.btn.pri:hover{background:var(--or2);box-shadow:0 16px 30px -14px rgba(242,92,5,1)}
-.btn.sec{background:rgba(255,255,255,.92);color:var(--ink);border-color:var(--line2)}
+/* boutons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.9rem 1.45rem;border-radius:999px;font:600 1rem/1 var(--font);text-decoration:none;border:1.5px solid transparent;cursor:pointer;white-space:nowrap;transition:transform .2s var(--ease),background .2s,box-shadow .2s}
+.btn:active{transform:translateY(1px) scale(.985)}
+.btn.pri{background:var(--or);color:#fff;box-shadow:0 10px 24px -12px rgba(242,92,5,.8)}
+.btn.pri:hover{background:#DD5303;transform:translateY(-1px)}
+.btn.sec{background:transparent;color:var(--ink);border-color:var(--line2)}
 .btn.sec:hover{border-color:var(--ink)}
-
-/* reveal (JS ajoute .js ; sans JS tout est visible) */
-.js .rv{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
-.js .rv.in{opacity:1;transform:none}
-.js .rv.d1{transition-delay:.1s}.js .rv.d2{transition-delay:.2s}.js .rv.d3{transition-delay:.3s}.js .rv.d4{transition-delay:.4s}
+.btn .ic{width:20px;height:20px}
 
 /* header */
-.bar{position:fixed;inset:0 0 auto;z-index:50;padding-top:env(safe-area-inset-top,0px);transition:background .3s,border-color .3s,height .3s;border-bottom:1px solid transparent}
-.bar.solid{background:rgba(255,255,255,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
-.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:var(--hdr);transition:height .3s}
-.bar.solid .wrap{height:58px}
-.brand{display:grid;text-decoration:none;line-height:1.05;white-space:nowrap;min-width:0}
-.brand b{font:800 1.1rem/1 var(--display);letter-spacing:.02em}
-.brand small{font-size:.68rem;color:var(--mute);letter-spacing:.04em;text-transform:uppercase}
-.nav{display:none;gap:1.6rem;font-size:.97rem;color:var(--mute)}
-.nav a{text-decoration:none}.nav a:hover{color:var(--ink)}
-.bar .btn{padding:.7rem 1.05rem;font-size:.92rem;flex:none}
-.bar:not(.solid) .brand b,.bar:not(.solid) .brand small{color:#fff}
-.bar:not(.solid) .nav{color:#EDE3DA}.bar:not(.solid) .nav a:hover{color:#fff}
+.bar{position:fixed;inset:0 0 auto;z-index:50;height:var(--hdr);background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid transparent;transition:border-color .3s}
+.bar.on{border-color:var(--line)}
+.bar .wrap{height:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{display:grid;text-decoration:none;line-height:1.05}
+.brand b{font-weight:800;letter-spacing:.02em;font-size:1.05rem}
+.brand small{font-size:.66rem;color:var(--mute);letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+.nav{display:none;gap:1.6rem}
+.nav a{text-decoration:none;color:var(--mute);font-weight:600;font-size:.95rem;transition:color .2s}
+.nav a:hover{color:var(--ink)}
+.bar .btn{padding:.7rem 1.1rem;font-size:.92rem}
 
-/* hero : diaporama */
-.hero{position:relative;min-height:100svh;display:grid;align-items:end;overflow:hidden;background:#2a2320;color:#fff}
-.slides{position:absolute;inset:0}
-.slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08);transition:opacity 1.6s ease}
-.slides img.on{opacity:1;animation:kb 7s linear forwards}
-@keyframes kb{from{transform:scale(1.08) translate(1.5%,0)}to{transform:scale(1.0) translate(0,0)}}
-.hero .scrim{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(30,20,12,.45) 0%,rgba(30,20,12,.1) 30%,rgba(30,20,12,.6) 58%,rgba(30,20,12,.94) 100%)}
-.hero .copy{position:relative;padding:calc(var(--hdr) + 6rem) 0 3.5rem}
-.hero .inner{display:grid;gap:1.1rem;justify-items:start;max-width:760px}
-.hero h1{color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.35)}
-.hero .lead{color:#EDE3DA;font-size:clamp(1.08rem,1.4vw,1.25rem);max-width:56ch}
-.tag{display:inline-flex;align-items:center;gap:.55rem;padding:.5rem .9rem;border:1px solid rgba(255,255,255,.45);background:rgba(255,255,255,.14);backdrop-filter:blur(8px);border-radius:999px;font:600 .85rem/1.2 var(--body);color:#fff}
-.actions{display:flex;flex-wrap:wrap;gap:.7rem}
-.dots{display:flex;gap:.5rem;position:absolute;right:var(--gut);bottom:1.4rem}
-.dots i{width:28px;height:4px;border-radius:2px;background:rgba(255,255,255,.35);transition:background .3s}
-.dots i.on{background:#fff}
+/* reveal (gate JS uniquement) */
+.js .rv{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .8s var(--ease)}
+.js .rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}
 
-/* chiffres qui défilent */
-.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transform-style:preserve-3d}
-.stats div{background:var(--card);padding:1.5rem 1.3rem;display:grid;gap:.25rem;align-content:start}
-.stats b{font:800 clamp(2.2rem,5vw,3.4rem)/1 var(--display);letter-spacing:-.03em;color:var(--or);font-variant-numeric:tabular-nums}
-.stats b small{font-size:.5em;letter-spacing:0;margin-left:.15em;color:var(--ink);font-weight:600}
-.stats strong{font:600 1.02rem/1.3 var(--display)}
-.stats div > span{color:var(--mute);font-size:.92rem}
+/* hero */
+.hero{padding:calc(var(--hdr) + 2rem) 0 3rem;min-height:min(100dvh,820px);display:grid;align-items:center}
+.hero .wrap{display:grid;gap:2.2rem;align-items:center}
+.hero .copy{display:grid;gap:1.3rem;max-width:38rem}
+.hero .actions{display:flex;flex-wrap:wrap;gap:.7rem}
+.hero .visual{position:relative}
+.hero .visual img{width:100%;aspect-ratio:5/4;object-fit:cover;border-radius:44% 24px 44% 24px / 30% 24px 30% 24px;box-shadow:var(--shadow)}
+.hero .badge{position:absolute;left:-8px;bottom:22px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.8rem 1rem;display:grid;gap:.1rem;box-shadow:var(--shadow);max-width:15rem}
+.hero .badge b{font-size:1.35rem;font-weight:800;letter-spacing:-.02em;color:var(--or-text);line-height:1.1}
+.hero .badge span{font-size:.82rem;color:var(--mute);line-height:1.3}
+
+/* chiffres */
+.stats{padding-block:0}
+.stats .wrap{display:grid;gap:1.6rem;padding:2.2rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats div{display:grid;gap:.2rem}
+.stats b{font-size:clamp(2rem,3.6vw,2.7rem);font-weight:800;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums;color:var(--ink)}
+.stats b small{font-size:.5em;font-weight:700;color:var(--or-text);letter-spacing:0;margin-left:.15em}
+.stats div > span{color:var(--mute);font-size:.95rem;line-height:1.4}
 .stats b .count{font:inherit;color:inherit}
 
-/* bande d'images qui défile */
-.strip{overflow:hidden;padding-block:.5rem;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.strip .track{display:flex;gap:1rem;width:max-content;animation:slide 48s linear infinite}
-.strip:hover .track{animation-play-state:paused}
-.strip figure{margin:0;width:min(58vw,420px);aspect-ratio:16/10;border-radius:14px;overflow:hidden;position:relative;box-shadow:var(--shadow);flex:none}
+/* service complet */
+.service .wrap{display:grid;gap:2.5rem;align-items:start}
+.service .list{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.service .list li{background:var(--card);padding:1.5rem;display:grid;gap:.7rem;align-content:start}
+.service .list .ic{width:30px;height:30px;color:var(--or)}
+.service .list p{color:var(--mute);font-size:.96rem}
+.service .list b{font-weight:700;color:var(--ink)}
+
+/* défilement photos (le seul marquee de la page) */
+.strip{padding-block:0;overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.strip .track{display:flex;gap:14px;width:max-content;animation:slide 52s linear infinite;will-change:transform}
+.strip figure{margin:0;flex:none;width:clamp(260px,32vw,440px);aspect-ratio:16/10;border-radius:16px;overflow:hidden;background:var(--line)}
 .strip img{width:100%;height:100%;object-fit:cover}
-.strip figcaption{position:absolute;left:0;right:0;bottom:0;padding:1.6rem .9rem .7rem;color:#fff;font:600 .88rem/1.2 var(--display);background:linear-gradient(180deg,transparent,rgba(30,20,12,.8))}
 @keyframes slide{to{transform:translateX(-50%)}}
+.strip:hover .track{animation-play-state:paused}
 
-/* cartes 3D (tilt) */
-.tilt{transform-style:preserve-3d;transition:transform .35s var(--ease),box-shadow .35s;will-change:transform}
-.tilt:hover{box-shadow:0 30px 60px -30px rgba(38,32,27,.45)}
-
-/* service */
-.cards{display:grid;grid-template-columns:1fr;gap:1rem}
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.5rem 1.4rem;display:grid;gap:.6rem;align-content:start}
-.card .ic{width:44px;height:44px;border-radius:12px;background:var(--soft);display:grid;place-items:center}
-.card .ic svg{width:24px;height:24px}
-.card b{font:600 1.1rem/1.3 var(--display)}
-.card p{color:var(--mute);font-size:.95rem}
-.card p strong{color:var(--ink);font-weight:600}
-
-/* avantages */
-.adv{display:grid;grid-template-columns:1fr;gap:1rem}
-.adv .a{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--or);border-radius:14px;padding:1.2rem 1.2rem 1.2rem 1.1rem;display:grid;gap:.5rem;align-content:start}
-.adv .a b{font:600 1.06rem/1.3 var(--display);color:var(--or)}
-.adv .a li{display:grid;grid-template-columns:18px 1fr;gap:.55rem;color:var(--mute);font-size:.93rem;padding:.15rem 0}
-.adv .a li::before{content:"";width:18px;height:18px;border-radius:50%;background:var(--soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F25C05' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l3.5 3.5L18 8'/%3E%3C/svg%3E") center/12px no-repeat;margin-top:.2rem}
-.adv .a li strong{color:var(--ink);font-weight:600}
-
-/* surplus */
-.surplus{display:grid;gap:2rem;align-items:center}
-.surplus .ph{border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/3}
-.surplus .ph img{width:100%;height:100%;object-fit:cover}
-.flow{display:grid;grid-template-columns:1fr auto 1fr;gap:.8rem;align-items:center;margin-top:1.4rem;padding:1.2rem;background:var(--soft);border-radius:14px}
-.flow div{display:grid;gap:.15rem;text-align:center}
-.flow b{font:800 clamp(1.6rem,3.6vw,2.4rem)/1 var(--display);color:var(--or);font-variant-numeric:tabular-nums}
-.flow b small{font-size:.5em;color:var(--ink);font-weight:600;margin-left:.1em}
-.flow div > span{font-size:.82rem;color:var(--mute)}
-.flow b .count{font:inherit;color:inherit}
-.flow .arr{width:38px;height:38px;border-radius:50%;background:var(--or);color:#fff;display:grid;place-items:center;font:700 1.2rem/1 var(--display)}
+/* avantages : bento */
+.bento{display:grid;gap:14px}
+.bento > *{border-radius:var(--r);min-height:200px}
+.bento .t{background:var(--card);border:1px solid var(--line);padding:1.5rem;display:grid;gap:.8rem;align-content:start}
+.bento .t h3{display:flex;align-items:center;gap:.6rem}
+.bento .t .ic{color:var(--or);flex:none}
+.bento .t ul{display:grid;gap:.45rem;color:var(--mute);font-size:.95rem}
+.bento .t li{display:grid;grid-template-columns:18px 1fr;gap:.5rem;align-items:start}
+.bento .t li .ic{width:18px;height:18px;margin-top:.2rem;color:var(--or)}
+.bento .p{overflow:hidden;position:relative;min-height:260px}
+.bento .p img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.bento .hi{background:var(--or);color:#fff;border-color:var(--or)}
+.bento .hi h3,.bento .hi ul,.bento .hi .ic,.bento .hi li .ic{color:#fff}
+.bento .hi ul{color:rgba(255,255,255,.9)}
+.note{color:var(--dim);font-size:.85rem;margin-top:1rem;max-width:80ch}
 
 /* simulateur */
 .sim{display:grid;gap:1.5rem}
 .sim .ctl{display:grid;gap:1.3rem;align-content:start;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.5rem}
 .sim label{display:grid;gap:.45rem;font-size:.95rem;color:var(--mute);font-weight:600}
-.sim .big{font:800 clamp(2.2rem,4.6vw,3.2rem)/1 var(--display);color:var(--ink);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.sim .big{font-size:clamp(2.2rem,4.6vw,3.2rem);font-weight:800;line-height:1;color:var(--ink);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
 .sim .big small{font-size:.4em;color:var(--mute);font-weight:600;letter-spacing:0}
 input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:32px;background:transparent;cursor:pointer;margin:0}
-input[type=range]::-webkit-slider-runnable-track{height:8px;border-radius:4px;background:linear-gradient(90deg,var(--or) var(--f,20%),rgba(31,35,40,.12) var(--f,20%))}
-input[type=range]::-moz-range-track{height:8px;border-radius:4px;background:rgba(31,35,40,.12)}
+input[type=range]::-webkit-slider-runnable-track{height:8px;border-radius:4px;background:linear-gradient(90deg,var(--or) var(--f,20%),var(--line2) var(--f,20%))}
+input[type=range]::-moz-range-track{height:8px;border-radius:4px;background:var(--line2)}
 input[type=range]::-moz-range-progress{height:8px;border-radius:4px;background:var(--or)}
 input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:50%;background:#fff;border:7px solid var(--or);margin-top:-10px;box-shadow:0 4px 12px rgba(0,0,0,.18)}
 input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:#fff;border:7px solid var(--or)}
-.rng{display:flex;justify-content:space-between;font-size:.82rem;color:var(--dim);font-weight:400}
-.before{display:grid;grid-template-columns:1fr auto 1fr;gap:.6rem;align-items:center;padding:1.1rem;background:var(--soft);border-radius:14px}
-.before div{display:grid;gap:.1rem;text-align:center}
-.before b{font:800 clamp(1.35rem,2.4vw,1.9rem)/1 var(--display);font-variant-numeric:tabular-nums;white-space:nowrap}
+.rng{display:flex;justify-content:space-between;font-size:.82rem;color:var(--dim);font-weight:500}
+.before{display:grid;grid-template-columns:1fr auto 1fr;gap:.6rem;align-items:center;padding:1.1rem;background:var(--or-soft);border-radius:14px}
+.before div{display:grid;gap:.15rem;text-align:center}
+.before b{font-size:clamp(1.3rem,2.3vw,1.85rem);font-weight:800;line-height:1;font-variant-numeric:tabular-nums;white-space:nowrap;letter-spacing:-.02em}
 .before .b1 b{color:var(--mute);text-decoration:line-through;text-decoration-thickness:3px;text-decoration-color:var(--or)}
-.before .b2 b{color:var(--or)}
-.before span{font-size:.8rem;color:var(--mute)}
-.before .pct{width:60px;height:60px;border-radius:50%;background:var(--or);color:#fff;display:grid;place-items:center;font:800 .95rem/1 var(--display)}
+.before .b2 b{color:var(--or-text)}
+.before span{font-size:.8rem;color:var(--mute);line-height:1.3}
+.before .pct{width:60px;height:60px;border-radius:50%;background:var(--or);color:#fff;display:grid;place-items:center;font-size:.95rem;font-weight:800}
 .out{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
-.out div{background:var(--card);padding:1rem 1.1rem;display:grid;gap:.2rem}
-.out b{font:700 clamp(1.25rem,2.3vw,1.7rem)/1.1 var(--display);font-variant-numeric:tabular-nums;white-space:nowrap}
-.out div{align-content:start}
-.out b.o{color:var(--or)}
+.out div{background:var(--card);padding:1rem 1.1rem;display:grid;gap:.2rem;align-content:start}
+.out b{font-size:clamp(1.25rem,2.3vw,1.7rem);font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums;white-space:nowrap;letter-spacing:-.02em}
+.out b.o{color:var(--or-text)}
 .out span{font-size:.84rem;color:var(--mute);line-height:1.35}
 .chart{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.3rem 1.1rem 1rem;display:grid;gap:.6rem;grid-template-rows:auto 1fr auto;align-items:center}
 .chart .top{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:baseline}
-.chart .top b{font:600 1.05rem/1.2 var(--display)}
+.chart .top b{font-weight:700;font-size:1.05rem}
 .chart .top span{font-size:.85rem;color:var(--mute)}
 .chart svg{width:100%;height:auto;overflow:visible}
-.chart svg text{font:500 11px var(--body);fill:var(--dim)}
-.chart .tot{font:600 13px var(--display);fill:var(--ink)}
-.how{display:grid;gap:1rem;margin-top:1.5rem}
-.how div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1.1rem 1.2rem;display:grid;gap:.25rem}
-.how b{font:800 1.7rem/1 var(--display);color:var(--or);font-variant-numeric:tabular-nums}
-.how b small{font-size:.5em;color:var(--ink);font-weight:600}
-.how span{font-size:.9rem;color:var(--mute)}
-.fine{font-size:.84rem;color:var(--dim);line-height:1.5;max-width:90ch;margin-top:1.2rem}
-.guar{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-top:1.5rem}
-.guar div{background:var(--card);padding:1.1rem 1.1rem;display:grid;gap:.15rem}
-.guar b{font:800 1.6rem/1 var(--display);color:var(--or);font-variant-numeric:tabular-nums}
-.guar b small{font-size:.5em;color:var(--ink);font-weight:600;margin-left:.1em}
-.guar span{font-size:.86rem;color:var(--mute)}
+.chart svg text{font:500 11px var(--font);fill:var(--dim)}
+.chart svg text.tot{font-size:13px;font-weight:700;fill:var(--ink)}
+.how{display:grid;gap:14px;margin-top:14px}
+.how div{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.3rem;display:grid;gap:.5rem;align-content:start}
+.how b{font-size:1.7rem;font-weight:800;letter-spacing:-.03em;color:var(--or-text);line-height:1}
+.how b small{font-size:.5em;color:var(--mute);font-weight:600;letter-spacing:0;margin-left:.2em}
+.how p{color:var(--mute);font-size:.95rem}
+.guar{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-top:14px}
+.guar div{background:var(--card);padding:1.1rem 1.2rem;display:grid;gap:.15rem}
+.guar b{font-size:1.5rem;font-weight:800;letter-spacing:-.03em;color:var(--or-text);line-height:1.1}
+.guar b small{font-size:.55em;font-weight:700;letter-spacing:0;margin-left:.15em}
+.guar span{color:var(--mute);font-size:.92rem;line-height:1.35}
 
-/* 3D panneau */
-.panel3d .wrap{display:grid;gap:1.4rem;align-items:center}
-.pstage{position:relative;aspect-ratio:4/3;width:100%;border-radius:var(--r);background:radial-gradient(75% 75% at 50% 40%,#FFFFFF,#F3E9E1);border:1px solid var(--line);overflow:hidden;box-shadow:var(--shadow)}
+/* autoconsommation collective */
+.coll .wrap{display:grid;gap:2.5rem;align-items:center}
+.coll .pic{position:relative;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/5;max-height:560px}
+.coll .pic img{width:100%;height:100%;object-fit:cover}
+.coll .pic figcaption{position:absolute;left:14px;right:14px;bottom:14px;background:rgba(31,26,22,.78);color:#fff;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:12px;padding:.85rem 1rem;font-size:.9rem;line-height:1.45}
+.coll .pic figcaption b{display:block;font-size:1rem;margin-bottom:.15rem}
+.coll .txt{display:grid;gap:1.2rem}
+.coll .keys{display:grid;gap:.7rem;margin-top:.4rem}
+.coll .keys li{display:grid;grid-template-columns:24px 1fr;gap:.7rem;align-items:start;color:var(--ink);font-size:1rem}
+.coll .keys .ic{color:var(--or);margin-top:.15rem}
+.coll .surplus{background:var(--or-soft);border-radius:14px;padding:1.2rem 1.3rem;display:grid;gap:.4rem;margin-top:.4rem}
+.coll .surplus b{font-weight:700}
+.coll .surplus p{color:var(--mute);font-size:.96rem}
+
+/* clef en main + 3D */
+.central .wrap{display:grid;gap:2rem;align-items:center}
+.pstage{position:relative;aspect-ratio:4/3;width:100%;border-radius:var(--r);background:radial-gradient(75% 75% at 50% 40%,var(--card),var(--or-soft));border:1px solid var(--line);overflow:hidden;box-shadow:var(--shadow)}
 .pstage canvas{position:absolute;inset:0;width:100%;height:100%}
 .layers{display:grid;border-top:1px solid var(--line)}
-.layers li{display:grid;gap:.1rem;padding:.5rem 0;border-bottom:1px solid var(--line);color:var(--dim);transition:color .3s}
+.layers li{display:grid;gap:.1rem;padding:.55rem 0;border-bottom:1px solid var(--line);color:var(--dim);transition:color .3s}
 .layers li b{font-weight:600;font-size:1rem}
 .layers li span{font-size:.9rem;display:none}
-.layers li.on{color:var(--ink)}.layers li.on b{color:var(--or)}.layers li.on span{display:block;color:var(--mute)}
+.layers li.on{color:var(--ink)}.layers li.on b{color:var(--or-text)}.layers li.on span{display:block;color:var(--mute)}
 .nogl .pstage{display:none}.nogl .layers li span{display:block}.nogl .layers li{color:var(--ink)}
+.central .incl{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.2rem}
+.central .incl li{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.45rem .85rem;font-size:.9rem;font-weight:600;display:flex;gap:.4rem;align-items:center}
+.central .incl .ic{width:16px;height:16px;color:var(--or)}
 
-/* process */
-.steps{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;counter-reset:st}
-.steps li{background:var(--card);padding:1.3rem 1.2rem;display:grid;gap:.4rem;align-content:start}
-.steps li::before{counter-increment:st;content:counter(st);width:34px;height:34px;border-radius:50%;background:var(--or);color:#fff;display:grid;place-items:center;font:700 .95rem/1 var(--display)}
-.steps b{font:600 1.06rem/1.3 var(--display)}
-.steps p{color:var(--mute);font-size:.92rem}
+/* process : frise */
+.steps{display:grid;gap:1.4rem;counter-reset:st;position:relative}
+.steps li{display:grid;gap:.5rem;align-content:start;position:relative;padding-left:54px;min-height:38px}
+.steps li::before{counter-increment:st;content:counter(st);width:38px;height:38px;border-radius:50%;background:var(--or);color:#fff;display:grid;place-items:center;font-weight:800;font-size:.95rem;position:absolute;left:0;top:0;z-index:1;box-shadow:0 0 0 6px var(--bg)}
+.steps li::after{content:"";position:absolute;left:18px;top:38px;bottom:-1.4rem;width:2px;background:var(--line2)}
+.steps li:last-child::after{display:none}
+.steps b{font-weight:700;font-size:1.05rem;line-height:1.3}
+.steps p{color:var(--mute);font-size:.94rem}
+.steps small{color:var(--or-text);font-weight:600;font-size:.85rem}
+
+/* application */
+.app .wrap{display:grid;gap:2rem;align-items:center}
+.app .phone{width:min(300px,70%);margin-inline:auto;border-radius:34px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line)}
+.app .txt{display:grid;gap:1.1rem}
+.app .kpi{display:flex;flex-wrap:wrap;gap:.5rem}
+.app .kpi li{background:var(--or-soft);color:var(--or-text);border-radius:999px;padding:.45rem .9rem;font-weight:600;font-size:.9rem}
+
+/* contexte */
+.ctx .grid{display:grid;gap:1.6rem;border-top:1px solid var(--line);padding-top:1.8rem}
+.ctx .grid div{display:grid;gap:.4rem}
+.ctx b{font-size:clamp(1.8rem,3.2vw,2.4rem);font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--or-text)}
+.ctx p{color:var(--mute);font-size:.96rem}
+.ctx .src{color:var(--dim);font-size:.82rem;margin-top:1.6rem}
 
 /* contact */
 .contact{background:var(--deep);color:#fff}
 .contact .wrap{display:grid;gap:2.4rem;align-items:start}
-.contact .lead{color:#D9CFC6}
-.promise{margin:1.4rem 0 0;display:grid;gap:.65rem}
-.promise li{display:grid;grid-template-columns:22px 1fr;gap:.7rem;color:#E9E1DA;font-size:1rem}
-.promise svg{width:22px;height:22px;margin-top:.2rem}
-.coord{display:grid;gap:.4rem;padding:1.2rem 1.3rem;border:1px solid rgba(255,255,255,.22);border-radius:var(--r);margin-top:1.6rem;background:rgba(255,255,255,.06)}
-.coord b{font:700 1.05rem/1.2 var(--display);letter-spacing:.02em}
-.coord span{color:#E9E1DA;user-select:all;font-size:1.02rem}
-.coord small{color:#B7ABA1;font-size:.85rem}
-form{display:grid;gap:1rem;background:#fff;color:var(--ink);border-radius:var(--r);padding:1.5rem;box-shadow:0 40px 70px -42px rgba(0,0,0,.6)}
+.contact .lead{color:#D9D2CB}
+.promise{margin:1.4rem 0 0;display:grid;gap:.7rem}
+.promise li{display:grid;grid-template-columns:22px 1fr;gap:.7rem;color:#EDE7E1;font-size:1rem}
+.promise .ic{width:22px;height:22px;margin-top:.2rem;color:#FFB37A}
+.coord{display:grid;gap:.3rem;padding:1.2rem 1.3rem;border:1px solid rgba(255,255,255,.18);border-radius:var(--r);margin-top:1.6rem;background:rgba(255,255,255,.05)}
+.coord b{font-weight:800;letter-spacing:.02em}
+.coord a{color:#fff;text-decoration:none;font-size:1.05rem;font-weight:600}
+.coord small{color:#B9B0A7;font-size:.86rem}
+form{display:grid;gap:1rem;background:var(--card);color:var(--ink);border-radius:var(--r);padding:1.5rem;box-shadow:0 40px 70px -42px rgba(0,0,0,.6)}
 .two{display:grid;gap:1rem}
 form label{display:block;font-size:.9rem;color:var(--mute);font-weight:600}
 form label > :is(input,select,textarea){margin-top:.35rem}
-form .btn{white-space:normal;text-align:center}
-.file{display:grid;gap:.4rem;padding:1rem;border:2px dashed rgba(242,92,5,.5);border-radius:12px;background:var(--soft2);cursor:pointer}
-.file input{font-size:.95rem;font-weight:400}
+.file{display:grid;gap:.4rem;padding:1rem;border:2px dashed rgba(242,92,5,.55);border-radius:12px;background:var(--or-soft);cursor:pointer}
+.file input{font-size:.95rem;font-weight:400;color:var(--ink)}
 .file small{color:var(--mute);font-weight:400}
-input[type=text],input[type=tel],input[type=email],select,textarea{font:inherit;font-size:1rem;font-weight:400;color:var(--ink);background:#fff;border:1px solid var(--line2);border-radius:10px;padding:.8rem .9rem;width:100%}
-input::placeholder,textarea::placeholder{color:#8A9096}
+input[type=text],input[type=tel],input[type=email],select,textarea{font:inherit;font-size:1rem;font-weight:400;color:var(--ink);background:var(--card);border:1px solid var(--line2);border-radius:10px;padding:.8rem .9rem;width:100%}
+input::placeholder,textarea::placeholder{color:#7A7E7B}
 textarea{min-height:84px;resize:vertical}
-input:focus,select:focus,textarea:focus{outline:none;border-color:var(--or);box-shadow:0 0 0 3px rgba(242,92,5,.18)}
-.req{color:var(--or)}
-.err{color:#B3261E;font-size:.9rem;min-height:1.2em}
-.done{display:grid;gap:.9rem;background:#fff;color:var(--ink);border-radius:var(--r);padding:1.5rem}
-.done h3{color:var(--or)}
-.done pre{margin:0;white-space:pre-wrap;font:400 .9rem/1.6 var(--body);color:var(--ink);background:var(--soft2);border:1px solid var(--line);border-radius:10px;padding:1rem;user-select:all}
-.done .actions .btn{white-space:normal}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--or);box-shadow:0 0 0 3px rgba(242,92,5,.2)}
+.req{color:var(--or-text)}
+.err{color:#D93025;font-size:.9rem;min-height:1.2em}
+.done{display:none;gap:.9rem;background:var(--card);color:var(--ink);border-radius:var(--r);padding:1.5rem}
+.done.on{display:grid}
+.done h3{color:var(--or-text)}
+.done pre{margin:0;white-space:pre-wrap;font:400 .9rem/1.6 var(--font);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:1rem;user-select:all}
+.done .actions{display:flex;flex-wrap:wrap;gap:.6rem}
 
-footer{padding-block:2rem calc(2rem + 74px);color:#B7ABA1;font-size:.88rem;background:var(--deep);border-top:1px solid rgba(255,255,255,.12)}
+footer{padding:2rem 0 calc(2rem + 74px);color:#B9B0A7;font-size:.88rem;background:var(--deep);border-top:1px solid rgba(255,255,255,.1)}
 footer .wrap{display:grid;gap:.8rem}
-footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;color:#D9CFC6}
+footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;color:#D9D2CB}
 footer p{max-width:80ch;line-height:1.5}
 
-.dock{position:fixed;inset:auto 0 0;z-index:40;padding:.6rem 16px calc(.6rem + env(safe-area-inset-bottom,0px));background:rgba(255,255,255,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line);display:grid;transform:translateY(110%);transition:transform .35s}
+.dock{position:fixed;inset:auto 0 0;z-index:40;padding:.6rem 16px calc(.6rem + env(safe-area-inset-bottom,0px));background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line);display:grid;transform:translateY(110%);transition:transform .35s var(--ease)}
 .dock.on{transform:none}
 .dock .btn{width:100%}
 
 @media (max-width:719px){
   .bar .wrap{gap:.5rem}
-  .bar .btn{padding:.6rem .7rem;font-size:.82rem}
+  .bar .btn{padding:.6rem .75rem;font-size:.84rem}
   .brand small{display:none}
-  .brand b{font-size:1rem}
+  .hero .visual img{aspect-ratio:4/3}
 }
 @media (min-width:720px){
-  .stats{grid-template-columns:repeat(4,1fr)}
-  .cards{grid-template-columns:repeat(2,1fr)}
-  .adv{grid-template-columns:repeat(2,1fr)}
-  .steps{grid-template-columns:repeat(5,1fr)}
+  .stats .wrap{grid-template-columns:repeat(4,1fr)}
+  .service .list{grid-template-columns:1fr 1fr}
+  .bento{grid-template-columns:repeat(2,1fr)}
   .two{grid-template-columns:1fr 1fr}
+  .how{grid-template-columns:repeat(3,1fr)}
+  .guar{grid-template-columns:repeat(4,1fr)}
+  .ctx .grid{grid-template-columns:repeat(3,1fr)}
+  .steps{grid-template-columns:repeat(5,1fr);gap:1.2rem}
+  .steps li{padding-left:0;padding-top:50px}
+  .steps li::after{left:38px;right:-1.2rem;top:18px;bottom:auto;height:2px;width:auto}
 }
 @media (min-width:960px){
   .nav{display:flex}
   .dock{display:none}
   footer{padding-bottom:2rem}
-  .hero .scrim{background:linear-gradient(90deg,rgba(30,20,12,.84) 0%,rgba(30,20,12,.55) 42%,rgba(30,20,12,.1) 72%),linear-gradient(180deg,rgba(30,20,12,.35),rgba(30,20,12,0) 30%,rgba(30,20,12,.5) 100%)}
-  .hero{align-items:center}
-  .hero .copy{padding:calc(var(--hdr) + 3rem) 0 4rem}
-  .cards{grid-template-columns:repeat(4,1fr)}
-  .adv{grid-template-columns:repeat(3,1fr)}
-  .surplus{grid-template-columns:1.1fr .9fr;gap:3.5rem}
+  .hero .wrap{grid-template-columns:1.1fr .9fr;gap:3.5rem}
+  .service .wrap{grid-template-columns:.8fr 1.2fr;gap:4rem}
+  .bento{grid-template-columns:repeat(3,1fr)}
+  .bento .p.w{grid-column:span 2}
   .sim{grid-template-columns:.85fr 1.15fr;gap:2rem}
-  .how{grid-template-columns:repeat(3,1fr)}
-  .guar{grid-template-columns:repeat(4,1fr)}
-  .panel3d .wrap{grid-template-columns:1.15fr .85fr;gap:3rem}
+  .coll .wrap{grid-template-columns:.9fr 1.1fr;gap:4rem}
+  .central .wrap{grid-template-columns:1.15fr .85fr;gap:3.5rem}
+  .app .wrap{grid-template-columns:.8fr 1.2fr;gap:4rem}
   .contact .wrap{grid-template-columns:.9fr 1.1fr;gap:4rem}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .js .rv{opacity:1;transform:none;transition:none}
-  .slides img.on{animation:none;transform:none}
   .strip .track{animation:none}
-  .tilt{transition:none}
+  .btn{transition:none}
 }
 </style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-certificate" viewBox="0 0 24 24"><path d="M12 15a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"/><path d="M13 17.5v4.5l2 -1.5l2 1.5v-4.5"/><path d="M10 19h-5a2 2 0 0 1 -2 -2v-10c0 -1.1 .9 -2 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -1 1.73"/><path d="M6 9l12 0"/><path d="M6 12l3 0"/><path d="M6 15l2 0"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"/><path d="M12 12l3 2"/><path d="M12 7v5"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 13a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -6"/><path d="M15 9a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -10"/><path d="M9 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -14"/><path d="M4 20h14"/></symbol>
+  <symbol id="i-infinity" viewBox="0 0 24 24"><path d="M9.828 9.172a4 4 0 1 0 0 5.656a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828"/></symbol>
+  <symbol id="i-cashoff" viewBox="0 0 24 24"><path d="M13 9h6a2 2 0 0 1 2 2v6m-2 2h-10a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2"/><path d="M12.582 12.59a2 2 0 0 0 2.83 2.826"/><path d="M17 9v-2a2 2 0 0 0 -2 -2h-6m-4 0a2 2 0 0 0 -2 2v6a2 2 0 0 0 2 2h2"/><path d="M3 3l18 18"/></symbol>
+  <symbol id="i-pig" viewBox="0 0 24 24"><path d="M15 11v.01"/><path d="M5.173 8.378a3 3 0 1 1 4.656 -1.377"/><path d="M16 4v3.803a6.019 6.019 0 0 1 2.658 3.197h1.341a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-1.342c-.336 .95 -.907 1.8 -1.658 2.473v2.027a1.5 1.5 0 0 1 -3 0v-.583a6.04 6.04 0 0 1 -1 .083h-4a6.04 6.04 0 0 1 -1 -.083v.583a1.5 1.5 0 0 1 -3 0v-2l0 -.027a6 6 0 0 1 4 -10.473h2.5l4.5 -3"/></symbol>
+  <symbol id="i-receipt" viewBox="0 0 24 24"><path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16l-3 -2l-2 2l-2 -2l-2 2l-2 -2l-3 2"/><path d="M14 8h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5m2 0v1.5m0 -9v1.5"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M11.46 20.846a12 12 0 0 1 -7.96 -14.846a12 12 0 0 0 8.5 -3a12 12 0 0 0 8.5 3a12 12 0 0 1 -.09 7.06"/><path d="M15 19l2 2l4 -4"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"/></symbol>
+  <symbol id="i-invoice" viewBox="0 0 24 24"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 7l1 0"/><path d="M9 13l6 0"/><path d="M13 17l2 0"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><path d="M8 12a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"/><path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M5 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"/><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0 -3 -3.85"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12l14 0"/><path d="M13 18l6 -6"/><path d="M13 6l6 6"/></symbol>
+  <symbol id="i-upload" viewBox="0 0 24 24"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"/><path d="M7 9l5 -5l5 5"/><path d="M12 4l0 12"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12l5 5l10 -10"/></symbol>
+  <symbol id="i-tools" viewBox="0 0 24 24"><path d="M3 21h4l13 -13a1.5 1.5 0 0 0 -4 -4l-13 13v4"/><path d="M14.5 5.5l4 4"/><path d="M12 8l-5 -5l-4 4l5 5"/><path d="M7 8l-1.5 1.5"/><path d="M16 12l5 5l-4 4l-5 -5"/><path d="M16 17l-1.5 1.5"/></symbol>
+  <symbol id="i-headset" viewBox="0 0 24 24"><path d="M4 14v-3a8 8 0 1 1 16 0v3"/><path d="M18 19c0 1.657 -2.686 3 -6 3"/><path d="M4 14a2 2 0 0 1 2 -2h1a2 2 0 0 1 2 2v3a2 2 0 0 1 -2 2h-1a2 2 0 0 1 -2 -2v-3"/><path d="M15 14a2 2 0 0 1 2 -2h1a2 2 0 0 1 2 2v3a2 2 0 0 1 -2 2h-1a2 2 0 0 1 -2 -2v-3"/></symbol>
+  <symbol id="i-mobile" viewBox="0 0 24 24"><path d="M6 5a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-14"/><path d="M11 4h2"/><path d="M12 17v.01"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M11.5 21h-5.5a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v6"/><path d="M16 3v4"/><path d="M8 3v4"/><path d="M4 11h16"/><path d="M15 19l2 2l4 -4"/></symbol>
+  <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 21c.5 -4.5 2.5 -8 7 -10"/><path d="M9 18c6.218 0 10.5 -3.288 11 -12v-2h-4.014c-9 0 -11.986 4 -12 9c0 1 0 3 2 5h3l.014 0"/></symbol>
+  <symbol id="i-community" viewBox="0 0 24 24"><path d="M8 9l5 5v7h-5v-4m0 4h-5v-7l5 -5m1 1v-6a1 1 0 0 1 1 -1h10a1 1 0 0 1 1 1v17h-8"/><path d="M13 7l0 .01"/><path d="M17 7l0 .01"/><path d="M17 11l0 .01"/><path d="M17 15l0 .01"/></symbol>
+  <symbol id="i-trend" viewBox="0 0 24 24"><path d="M3 17l6 -6l4 4l8 -8"/><path d="M14 7l7 0l0 7"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10"/><path d="M3 7l9 6l9 -6"/></symbol>
+  <symbol id="i-ccheck" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"/><path d="M9 12l2 2l4 -4"/></symbol>
+  <symbol id="i-clipboard" viewBox="0 0 24 24"><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2"/><path d="M9 5a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2"/><path d="M9 14l2 2l4 -4"/></symbol>
+  <symbol id="i-plug" viewBox="0 0 24 24"><path d="M7 12l5 5l-1.5 1.5a3.536 3.536 0 1 1 -5 -5l1.5 -1.5"/><path d="M17 12l-5 -5l1.5 -1.5a3.536 3.536 0 1 1 5 5l-1.5 1.5"/><path d="M3 21l2.5 -2.5"/><path d="M18.5 5.5l2.5 -2.5"/><path d="M10 11l-2 2"/><path d="M13 14l-2 2"/></symbol>
+  <symbol id="i-homebolt" viewBox="0 0 24 24"><path d="M19 10l-7 -7l-9 9h2v7a2 2 0 0 0 2 2h7.5"/><path d="M9 21v-6a2 2 0 0 1 2 -2h2c.661 0 1.248 .32 1.612 .815"/><path d="M19 14l-2 4h4l-2 4"/></symbol>
+  <symbol id="i-mappin" viewBox="0 0 24 24"><path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/><path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0"/></symbol>
+</svg>
 
 <header class="bar" id="bar"><div class="wrap">
-  <a class="brand" href="#top" aria-label="ASL Consulting, accueil"><b>ASL CONSULTING</b><small>Bureau d'étude · Audit · Diagnostics</small></a>
+  <a class="brand" href="#top" aria-label="ASL Consulting, accueil"><b>ASL CONSULTING</b><small>Bureau d'étude, audit, diagnostics</small></a>
   <nav class="nav" aria-label="Sections">
-    <a href="#abonnement">L'abonnement</a><a href="#simulateur">Simulateur</a><a href="#surplus">Autoconsommation</a><a href="#process">Le process</a>
+    <a href="#abonnement">L'abonnement</a><a href="#simulateur">Simulateur</a><a href="#collectif">Autoconsommation</a><a href="#process">Le process</a>
   </nav>
   <a class="btn pri" href="#contact">Joindre ma facture</a>
 </div></header>
 
 <main id="top">
 
-<!-- HERO : diaporama -->
-<section class="hero" id="hero" aria-label="Présentation">
-  <div class="slides" id="slides" aria-hidden="true">
-    <img class="on" src="img/chantier.jpg" alt="">
-    <img src="img/usine.jpg" alt="">
-    <img src="img/ombrieres.jpg" alt="">
-    <img src="img/logistique.jpg" alt="">
-  </div>
-  <div class="scrim"></div>
-  <div class="copy"><div class="wrap"><div class="inner">
-    <span class="tag rv">ASL CONSULTING, entreprise à mission</span>
-    <h1 class="rv d1">La première solution d'abonnement solaire pour les collectivités et locaux commerciaux.</h1>
-    <p class="lead rv d2">Sans apport, sans investissement, sans crédit bancaire : équipez-vous, produisez et consommez votre propre énergie solaire. Partout en France, avec des installateurs locaux certifiés RGE.</p>
-    <div class="actions rv d3">
-      <a class="btn pri" href="#contact">Joindre ma facture</a>
-      <a class="btn sec" href="#simulateur">Simuler mes économies</a>
-    </div>
-  </div></div></div>
-  <div class="dots" id="dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
-</section>
-
-<!-- CHIFFRES -->
-<section class="sec" id="leader">
+<section class="hero" aria-label="Présentation">
   <div class="wrap">
-    <div class="head rv"><h2>Leader de l'abonnement solaire, <em>spécialiste de l'autoconsommation</em> individuelle et collective.</h2></div>
-    <div class="stats tilt rv">
-      <div><b><span class="count" data-to="25">0</span></b><strong>Équipe dédiée</strong><span>collaborateurs pour accompagner vos projets au quotidien</span></div>
-      <div><b><span class="count" data-to="700">0</span></b><strong>Modèle éprouvé</strong><span>abonnés entreprises et résidentiels déjà satisfaits</span></div>
-      <div><b><span class="count" data-to="10000">0</span></b><strong>Objectif 2030</strong><span>collectivités et entreprises équipées grâce à l'abonnement</span></div>
-      <div><b><span class="count" data-to="0">0</span><small>€</small></b><strong>Apport initial</strong><span>ni investissement, ni crédit bancaire, ni ligne budgétaire</span></div>
+    <div class="copy">
+      <h1 class="rv">La première solution d'abonnement solaire pour les collectivités et locaux commerciaux.</h1>
+      <p class="lead rv d1">Sans apport, sans investissement, sans crédit bancaire. Matériel, pose, mise en service et maintenance sont compris dans l'abonnement.</p>
+      <div class="actions rv d2">
+        <a class="btn pri" href="#contact">Joindre ma facture <svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-arrow"/></svg></a>
+        <a class="btn sec" href="#simulateur">Simuler mes économies</a>
+      </div>
+    </div>
+    <div class="visual rv d1">
+      <img src="img/usine.jpg" width="1600" height="900" alt="Usine équipée de panneaux photovoltaïques en toiture, vue aérienne au lever du soleil" fetchpriority="high">
+      <div class="badge"><b>+ de 30 %</b><span>d'économie sur la facture d'électricité, hors abonnement</span></div>
     </div>
   </div>
 </section>
 
-<!-- BANDE D'IMAGES -->
-<div class="strip" aria-label="Installations">
-  <div class="track" id="track">
-    <figure><img src="img/usine_s.jpg" alt="Usine aux toitures couvertes de panneaux solaires" loading="lazy"><figcaption>Usines et ateliers</figcaption></figure>
-    <figure><img src="img/logistique_s.jpg" alt="Plateforme logistique au toit solaire" loading="lazy"><figcaption>Plateformes logistiques</figcaption></figure>
-    <figure><img src="img/ombrieres_s.jpg" alt="Ombrières solaires sur un parking d'entreprise" loading="lazy"><figcaption>Ombrières de parking</figcaption></figure>
-    <figure><img src="img/village_s.jpg" alt="Bâtiments publics d'un village équipés de panneaux solaires" loading="lazy"><figcaption>Bâtiments publics</figcaption></figure>
-    <figure><img src="img/ombrieres_pose_s.jpg" alt="Techniciens posant des panneaux sur une ombrière" loading="lazy"><figcaption>Pose par installateur RGE</figcaption></figure>
-    <figure><img src="img/chantier_s.jpg" alt="Techniciens sur une toiture industrielle" loading="lazy"><figcaption>Toitures industrielles</figcaption></figure>
-  
-    <figure><img src="img/usine_s.jpg" alt="Usine aux toitures couvertes de panneaux solaires" loading="lazy"><figcaption>Usines et ateliers</figcaption></figure>
-    <figure><img src="img/logistique_s.jpg" alt="Plateforme logistique au toit solaire" loading="lazy"><figcaption>Plateformes logistiques</figcaption></figure>
-    <figure><img src="img/ombrieres_s.jpg" alt="Ombrières solaires sur un parking d'entreprise" loading="lazy"><figcaption>Ombrières de parking</figcaption></figure>
-    <figure><img src="img/village_s.jpg" alt="Bâtiments publics d'un village équipés de panneaux solaires" loading="lazy"><figcaption>Bâtiments publics</figcaption></figure>
-    <figure><img src="img/ombrieres_pose_s.jpg" alt="Techniciens posant des panneaux sur une ombrière" loading="lazy"><figcaption>Pose par installateur RGE</figcaption></figure>
-    <figure><img src="img/chantier_s.jpg" alt="Techniciens sur une toiture industrielle" loading="lazy"><figcaption>Toitures industrielles</figcaption></figure>
+<section class="stats" aria-label="ASL Consulting en chiffres">
+  <div class="wrap">
+    <div class="rv"><b><span class="count" data-to="25">0</span></b><span>collaborateurs pour accompagner vos projets au quotidien</span></div>
+    <div class="rv d1"><b><span class="count" data-to="700">0</span></b><span>abonnés entreprises et résidentiels déjà équipés</span></div>
+    <div class="rv d2"><b><span class="count" data-to="10000">0</span></b><span>clients visés d'ici 2030, collectivités et entreprises</span></div>
+    <div class="rv d3"><b>RGE</b><span>installateurs locaux certifiés, partout en France</span></div>
   </div>
-</div>
+</section>
 
-<!-- SERVICE -->
-<section class="sec alt" id="abonnement">
+<section class="service" id="abonnement">
   <div class="wrap">
     <div class="head rv">
-      <h2>Ni crédit, ni leasing : <em>l'abonnement est un service complet.</em></h2>
-      <p class="lead">Matériel, pose, mise en service et maintenance sont compris dans un abonnement longue durée.</p>
+      <h2>Ni crédit, ni leasing. <em>L'abonnement est un service complet.</em></h2>
+      <p class="lead">Vous produisez et consommez votre propre énergie solaire. ASL Consulting, entreprise à mission, prend en charge le reste pendant toute la durée du contrat.</p>
     </div>
-    <div class="cards">
-      <div class="card tilt rv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#F25C05" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span><b>Service technique expert</b><p>Des <strong>experts en modélisation</strong> qui opèrent comme un bureau d'étude interne, pour <strong>l'installation la plus adaptée, au juste prix</strong>.</p></div>
-      <div class="card tilt rv d1"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#F25C05" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><b>Supervision h24, bon fonctionnement garanti</b><p>Pendant toute la durée du contrat, avec une <strong>visite annuelle de maintenance préventive</strong> au-delà de 75 kWc.</p></div>
-      <div class="card tilt rv d2"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#F25C05" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><b>Application et outils de pilotage</b><p>Suivi de la production en temps réel pour <strong>maximiser vos économies</strong> et piloter votre taux d'autoconsommation.</p></div>
-      <div class="card tilt rv d3"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#F25C05" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 12a4 4 0 1 1 0-.01M16 12a4 4 0 1 0 0-.01"/></svg></span><b>Engagement à long terme</b><p><strong>Optimisation économique</strong> de votre production et avancées technologiques, pendant et après votre contrat.</p></div>
-    </div>
+    <ul class="list">
+      <li class="rv"><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-certificate"/></svg><h3>Un service technique expert en photovoltaïque</h3><p>Des experts en modélisation d'installations photovoltaïques opèrent comme un bureau d'étude interne, pour l'installation <b>la plus adaptée à vos besoins, au juste prix.</b></p></li>
+      <li class="rv d1"><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-clock"/></svg><h3>Supervision h24 et bon fonctionnement garantis</h3><p>Vous supervisez l'installation pendant toute la durée du contrat. <b>Une visite annuelle de maintenance préventive</b> est incluse pour les installations de plus de 75 kWc.</p></li>
+      <li class="rv d2"><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-chart"/></svg><h3>Application propriétaire et outils de pilotage</h3><p>Équipements de suivi et de pilotage de dernière technologie, et accès à l'application pour <b>maximiser vos économies</b> et gagner en autonomie.</p></li>
+      <li class="rv d3"><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-infinity"/></svg><h3>Un engagement à long terme</h3><p>Optimisation économique de votre production et accès aux avancées technologiques, <b>pendant et après</b> votre contrat d'abonnement.</p></li>
+    </ul>
   </div>
 </section>
 
-<!-- AVANTAGES -->
-<section class="sec" id="avantages">
+<section class="strip" aria-label="Réalisations">
+  <div class="track">
+    <figure><img src="img/usine_s.jpg" loading="lazy" alt="Toiture d'usine couverte de panneaux solaires"></figure>
+    <figure><img src="img/ombrieres_s.jpg" loading="lazy" alt="Ombrières photovoltaïques sur un parking d'entreprise"></figure>
+    <figure><img src="img/logistique_s.jpg" loading="lazy" alt="Entrepôt logistique équipé en photovoltaïque"></figure>
+    <figure><img src="img/chantier_s.jpg" loading="lazy" alt="Installateurs posant des panneaux sur un toit industriel"></figure>
+    <figure><img src="img/ombrieres_pose_s.jpg" loading="lazy" alt="Pose de panneaux sur une ombrière de parking"></figure>
+    <figure><img src="img/usine_s.jpg" loading="lazy" alt=""></figure>
+    <figure><img src="img/ombrieres_s.jpg" loading="lazy" alt=""></figure>
+    <figure><img src="img/logistique_s.jpg" loading="lazy" alt=""></figure>
+    <figure><img src="img/chantier_s.jpg" loading="lazy" alt=""></figure>
+    <figure><img src="img/ombrieres_pose_s.jpg" loading="lazy" alt=""></figure>
+  </div>
+</section>
+
+<section id="avantages">
   <div class="wrap">
-    <div class="head rv"><h2>Les avantages de l'abonnement solaire <em>par ASL CONSULTING.</em></h2></div>
-    <div class="adv">
-      <div class="a tilt rv"><b>Pas d'apport initial</b><ul><li><strong>Zéro investissement initial</strong></li><li>Pas de demande de ligne budgétaire</li></ul></div>
-      <div class="a tilt rv d1"><b>Pas d'emprunt</b><ul><li>Capacité d'investissement préservée pour vos projets stratégiques</li><li>Ni dette, ni engagement hors bilan, contrairement au leasing (IFRS 16)</li></ul></div>
-      <div class="a tilt rv d2"><b>Économies immédiates, coûts maîtrisés</b><ul><li><strong>Des économies dès la première année</strong></li><li>Abonnement de 10 à 25 ans, sortie anticipée possible dès la 5e année</li></ul></div>
-      <div class="a tilt rv"><b>Tranquillité d'esprit totale</b><ul><li>Garantie de bon fonctionnement incluse, pas de frais supplémentaires</li><li>En cas de panne, GMP GROUP s'occupe de tout</li></ul></div>
-      <div class="a tilt rv d1"><b>Offre de service complète</b><ul><li>Application, monitoring 24 h/24, service client en France</li><li>Possibilité d'évolution de l'installation</li></ul></div>
-      <div class="a tilt rv d2"><b>Conformité décret tertiaire 2030</b><ul><li>Les kWh autoconsommés sont déduits de votre consommation totale (-40 % exigés d'ici 2030)</li><li>Autonomie énergétique et impact carbone réduit</li></ul></div>
+    <div class="head rv"><h2>Les avantages de l'abonnement solaire <em>par ASL Consulting.</em></h2></div>
+    <div class="bento">
+      <figure class="p w rv"><img src="img/ombrieres.jpg" loading="lazy" alt="Ombrières solaires couvrant un parking d'entreprise"></figure>
+      <div class="t hi rv d1"><h3><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-cashoff"/></svg>Pas d'apport initial</h3><ul><li><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Zéro investissement initial</li><li><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Pas de demande de ligne budgétaire</li></ul></div>
+      <div class="t rv"><h3><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-pig"/></svg>Pas d'emprunt</h3><ul><li><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Préserve votre capacité d'investissement pour des projets plus stratégiques</li><li><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Évite les démarches longues de demande de financement</li><li><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Ni dette, ni engagement hors bilan, contrairement au leasing (IFRS 16)</li></ul></div>
+      <div class="t rv d1"><h3><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-receipt"/></svg>Économies immédiates, coûts maîtrisés</h3><ul><li><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Des économies dès la première année</li><li><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Durée d'abonnement de 10 à 25 ans</li><li><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Sortie anticipée possible dès la fin de la 5e année</li></ul></div>
+      <div class="t rv d2"><h3><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-shield"/></svg>Tranquillité d'esprit totale</h3><ul><li><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Garantie de bon fonctionnement incluse</li><li><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Pas de frais supplémentaires</li><li><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>En cas de panne, notre partenaire s'occupe de tout</li></ul></div>
+      <div class="t rv"><h3><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-headset"/></svg>Offre de service complète</h3><ul><li><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Application de suivi de la production et des économies</li><li><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Service client dédié situé en France</li><li><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Monitoring 24h/24 et évolution possible de l'installation</li></ul></div>
+      <div class="t rv d1"><h3><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-leaf"/></svg>Conformité décret tertiaire 2030</h3><ul><li><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Les kWh autoconsommés sont déduits de votre consommation totale</li><li><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Gagnez en autonomie énergétique</li><li><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Réduisez votre impact carbone</li></ul></div>
+      <figure class="p rv d2"><img src="img/chantier.jpg" loading="lazy" alt="Techniciens installant des panneaux solaires sur un toit industriel"></figure>
     </div>
+    <p class="note">EcoEnergie Tertiaire impose aux acteurs du tertiaire de réduire leur consommation d'énergie de 40 % d'ici 2030 par rapport à 2010.</p>
   </div>
 </section>
 
-<!-- SIMULATEUR -->
-<section class="sec alt" id="simulateur">
+<section id="simulateur">
   <div class="wrap">
     <div class="head rv">
       <h2>Plus de 30 % d'économie sur votre facture d'électricité, <em>hors abonnement.</em></h2>
@@ -378,8 +429,8 @@ footer p{max-width:80ch;line-height:1.5}
       <div class="ctl rv">
         <label for="bill">Votre facture d'électricité mensuelle
           <span class="big" id="billOut">5 300 <small>€ / mois</small></span>
-          <input type="range" id="bill" min="1000" max="30000" step="100" value="5300">
-          <span class="rng"><span>1 000 €</span><span>30 000 €</span></span>
+          <input type="range" id="bill" min="2000" max="30000" step="100" value="5300">
+          <span class="rng"><span>2 000 €</span><span>30 000 €</span></span>
         </label>
         <label for="years">Durée de l'abonnement
           <span class="big" id="yearsOut">15 <small>ans</small></span>
@@ -395,102 +446,136 @@ footer p{max-width:80ch;line-height:1.5}
           <div><b class="o" id="oSave">…</b><span>d'économie d'électricité la 1re année</span></div>
           <div><b id="oSub">…</b><span>d'abonnement par mois, tout compris</span></div>
           <div><b class="o" id="oNet">…</b><span>de gain net la 1re année, abonnement déduit</span></div>
-          <div><b class="o" id="oAfter">…</b><span id="oAfterLbl">par an, une fois l'abonnement terminé</span></div>
+          <div><b class="o" id="oAfter">…</b><span>par an, une fois l'abonnement terminé</span></div>
         </div>
       </div>
       <div class="chart rv d1">
         <div class="top"><b>Gain net cumulé sur 30 ans</b><span>€, abonnement déduit</span></div>
         <svg id="chart" viewBox="0 0 640 300" role="img" aria-label="Gain net cumulé sur 30 ans"></svg>
-        <div class="out" style="margin-top:.4rem">
+        <div class="out">
           <div><b id="oCum">…</b><span id="oCumLbl">cumulés pendant l'abonnement</span></div>
           <div><b class="o" id="oCum30">…</b><span>cumulés sur 30 ans</span></div>
         </div>
       </div>
     </div>
     <div class="how">
-      <div class="rv"><b>0,15 → 0,02<small> €/kWh</small></b><span>L'électricité autoconsommée vous coûte 0,02 € le kWh au lieu de 0,15 €, soit 85 % de moins hors abonnement.</span></div>
-      <div class="rv d1"><b>72<small> %</small></b><span>de taux d'autoconsommation : la part de votre consommation couverte par votre propre production.</span></div>
-      <div class="rv d2"><b>+3,5<small> % / an</small></b><span>Vos économies progressent chaque année avec le prix de l'électricité : de 18 500 € à 30 000 € par an sur 15 ans pour le dossier type.</span></div>
+      <div class="rv"><b>0,15 <small>→ 0,02 €/kWh</small></b><p>L'électricité autoconsommée vous coûte 0,02 € le kWh au lieu de 0,15 €, soit 85 % de moins hors abonnement.</p></div>
+      <div class="rv d1"><b>72 <small>%</small></b><p>de taux d'autoconsommation : la part de votre consommation couverte par votre propre production.</p></div>
+      <div class="rv d2"><b>+3,5 <small>% / an</small></b><p>Vos économies progressent avec le prix de l'électricité : de 18 500 € à 30 000 € par an sur 15 ans pour le dossier type.</p></div>
     </div>
-    <div class="guar rv">
-      <div><b>25<small>ans</small></b><span>de garantie matériel sur les panneaux</span></div>
-      <div><b>30<small>ans</small></b><span>de garantie de rendement</span></div>
-      <div><b>10<small>ans</small></b><span>de garantie sur les onduleurs</span></div>
-      <div><b>24<small>h</small></b><span>pour recevoir votre étude à partir de votre facture</span></div>
+    <div class="guar">
+      <div class="rv"><b>25 <small>ans</small></b><span>de garantie matériel sur les panneaux</span></div>
+      <div class="rv d1"><b>30 <small>ans</small></b><span>de garantie de rendement</span></div>
+      <div class="rv d2"><b>10 <small>ans</small></b><span>de garantie sur les onduleurs</span></div>
+      <div class="rv d3"><b>24 <small>h</small></b><span>pour recevoir votre étude à partir de votre facture</span></div>
     </div>
-    <p class="fine">Simulation indicative, proportionnelle au dossier type (facture de 5 300 € par mois, abonnement 15 ans). Installation de base hors batteries de stockage, ajout possible pour une utilisation nocturne. Le montant exact dépend de votre consommation et de vos surfaces : il est chiffré par le bureau d'étude et inscrit dans votre proposition d'abonnement.</p>
+    <p class="note">Simulation indicative, proportionnelle au dossier type (facture de 5 300 € par mois, abonnement 15 ans). Installation de base hors batteries de stockage, ajout possible pour une utilisation nocturne. Le montant exact dépend de votre consommation et de vos surfaces : il est chiffré par le bureau d'étude et inscrit dans votre proposition d'abonnement.</p>
   </div>
 </section>
 
-<!-- SURPLUS / AUTOCONSOMMATION COLLECTIVE -->
-<section class="sec" id="surplus">
-  <div class="wrap surplus">
-    <div>
-      <h2 class="rv">Votre toiture produit plus que vous ne consommez ? <em>Le surplus se revend aux alentours.</em></h2>
-      <p class="lead rv d1" style="margin-top:1rem">Si votre consommation appelle 150 kWc mais que votre toiture peut accueillir 250 kWc, nous dimensionnons l'installation sur la toiture. Le surplus est revendu ou partagé avec les bâtiments voisins dans un rayon d'environ 300 mètres : c'est l'autoconsommation collective.</p>
-      <div class="flow rv d2">
-        <div><b><span class="count" data-to="250">0</span><small>kWc</small></b><span>ce que votre toiture peut accueillir</span></div>
-        <span class="arr">→</span>
-        <div><b><span class="count" data-to="100">0</span><small>kWc</small></b><span>de surplus revendu ou partagé aux alentours</span></div>
-      </div>
-      <ul class="promise rv d3" style="color:var(--mute)">
-        <li style="color:var(--mute)"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#FFF0E6"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#F25C05" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Partage de l'électricité entre bâtiments publics, extension possible aux entreprises et aux habitants</span></li>
-        <li style="color:var(--mute)"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#FFF0E6"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#F25C05" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Le surplus peut être revendu au réseau ou cédé jusqu'à 300 mètres, au tarif de rachat négocié avec l'acheteur obligé</span></li>
-        <li style="color:var(--mute)"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#FFF0E6"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#F25C05" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>CO₂ économisé, taux d'autoconsommation et économies visibles dans l'application, et partageables sur écran</span></li>
+<section class="coll" id="collectif">
+  <div class="wrap">
+    <figure class="pic rv">
+      <img src="img/village.jpg" loading="lazy" alt="Bâtiments d'une commune équipés de panneaux solaires en toiture">
+      <figcaption><b>Boucles locales d'énergie</b>Partage de l'électricité entre bâtiments publics, extension possible aux entreprises et aux habitants.</figcaption>
+    </figure>
+    <div class="txt">
+      <h2 class="rv">Abonnement et autoconsommation collective : <em>un outil au service du territoire.</em></h2>
+      <p class="lead rv d1">Au-delà de la production, la solution structure de véritables boucles locales d'énergie d'autoconsommation.</p>
+      <ul class="keys rv d2">
+        <li><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-bolt"/></svg>Optimiser l'usage de l'énergie produite et renforcer la résilience énergétique locale</li>
+        <li><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-community"/></svg>Créer une dynamique territoriale autour de l'énergie et renforcer l'attractivité du territoire</li>
+        <li><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-users"/></svg>Répondre aux attentes des administrés : 87 % des Français font de l'indépendance énergétique locale un enjeu électoral</li>
       </ul>
+      <div class="surplus rv d3">
+        <b>Votre toiture produit plus que vous ne consommez ? Le surplus se valorise.</b>
+        <p>Si votre consommation appelle 150 kWc mais que votre toiture en accepte 250, l'installation est dimensionnée à 250 kWc. Le surplus est revendu au tarif de rachat ou cédé aux consommateurs situés jusqu'à 300 m autour de votre site.</p>
+      </div>
     </div>
-    <div class="ph tilt rv d1"><img src="img/ombrieres.jpg" alt="Ombrières solaires devant des bureaux, l'électricité produite est partagée entre les bâtiments" loading="lazy"></div>
   </div>
 </section>
 
-<!-- PANNEAU 3D -->
-<section class="sec alt panel3d" id="centrale">
+<section class="central" id="centrale">
   <div class="wrap">
     <div class="pstage rv"><canvas id="panelGL" aria-hidden="true"></canvas></div>
-    <div style="display:grid;gap:1rem" class="rv d1">
-      <h2 style="font-size:clamp(1.6rem,3vw,2.3rem)">Une installation clef en main, <em>de la cellule au toit.</em></h2>
-      <p class="lead" style="font-size:1rem">Fourniture du matériel, pose, mise en service et maintenance : tout est compris dans l'abonnement.</p>
-      <ol class="layers" id="layers">
-        <li class="on"><b>Verre trempé antireflet</b><span>Résistant à la grêle et à la charge de neige.</span></li>
-        <li><b>Encapsulant</b><span>Protège les cellules de l'humidité et des UV.</span></li>
-        <li><b>Cellules photovoltaïques</b><span>Haut rendement, efficaces dès le lever du jour.</span></li>
-        <li><b>Encapsulant arrière</b><span>Deuxième barrière, étanchéité complète du module.</span></li>
-        <li><b>Face arrière</b><span>Isolation électrique et tenue mécanique.</span></li>
-        <li><b>Cadre aluminium</b><span>Rigidité, résistance au vent, fixation sur votre toiture.</span></li>
-        <li><b>Boîte de jonction</b><span>Connexion sécurisée, suivie à distance par l'application.</span></li>
+    <div>
+      <h2 class="rv">Une installation clef en main, <em>de la cellule au toit.</em></h2>
+      <p class="lead rv d1" style="margin:1rem 0 1.2rem">Fourniture du matériel, pose, mise en service et maintenance : tout est compris dans l'abonnement.</p>
+      <ol class="layers rv d2" id="layers">
+        <li class="on"><b>Verre trempé</b><span>Protège les cellules de la grêle et des intempéries.</span></li>
+        <li><b>Encapsulant</b><span>Film qui scelle les cellules contre l'humidité.</span></li>
+        <li><b>Cellules photovoltaïques</b><span>Convertissent la lumière en courant continu.</span></li>
+        <li><b>Encapsulant arrière</b><span>Seconde couche de protection des cellules.</span></li>
+        <li><b>Face arrière</b><span>Isolation électrique et évacuation de la chaleur.</span></li>
+        <li><b>Cadre aluminium</b><span>Rigidité et fixation sur la structure du toit.</span></li>
+        <li><b>Boîte de jonction</b><span>Raccorde le panneau vers l'onduleur.</span></li>
       </ol>
+      <ul class="incl rv d3">
+        <li><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Panneaux et onduleurs</li>
+        <li><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Pose par installateur RGE</li>
+        <li><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Raccordement</li>
+        <li><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Démarches mairie</li>
+        <li><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Maintenance</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- PROCESS -->
-<section class="sec" id="process">
+<section id="process">
   <div class="wrap">
-    <div class="head rv"><h2>Le process <em>en 5 étapes.</em></h2></div>
-    <ol class="steps rv">
-      <li><b>Identification du besoin</b><p>À partir de votre facture d'électricité, nous étudions votre projet et vous remettons une étude sous 24 h : solution clef en main selon vos usages et vos surfaces.</p></li>
-      <li><b>Étude personnalisée</b><p>Un conseiller technique valide le devis sur place après un contrôle rigoureux. Proposition d'abonnement définitive, pour maximiser votre autoconsommation.</p></li>
-      <li><b>Contrat d'abonnement</b><p>Vous signez votre contrat et le mandat de prélèvement SEPA. Les démarches administratives, mairie comprise, sont intégralement prises en charge.</p></li>
-      <li><b>Pose et mise en service</b><p>Notre partenaire installateur pose, raccorde et met en service votre centrale. Votre abonnement démarre.</p></li>
-      <li><b>Optimisation</b><p>Vous suivez votre production dans l'application et générez des économies dès la première année. Entretien annuel et garantie de bon fonctionnement assurés.</p></li>
+    <div class="head rv"><h2>Le process <em>en 5 étapes.</em></h2><p class="lead">Tout démarre avec votre facture d'électricité : c'est elle qui permet de dimensionner l'installation.</p></div>
+    <ol class="steps">
+      <li class="rv"><b>Identification du besoin</b><p>Vous joignez votre facture. Nous étudions vos usages, votre consommation, vos bâtiments et surfaces disponibles.</p><small>Étude sous 24 h</small></li>
+      <li class="rv d1"><b>Étude personnalisée</b><p>Solution clef en main proposée. Notre installateur partenaire effectue un contrôle technique rigoureux sur place.</p><small>Visite technique sous 48 h</small></li>
+      <li class="rv d2"><b>Contrat d'abonnement</b><p>Proposition définitive au plus près de vos besoins. Vous signez le contrat et le mandat SEPA, les démarches administratives sont lancées.</p></li>
+      <li class="rv d3"><b>Pose et mise en service</b><p>Notre partenaire pose et met en service votre centrale, et réalise les démarches de raccordement. Votre abonnement démarre.</p></li>
+      <li class="rv d3"><b>Optimisation</b><p>Garantie de bon fonctionnement et entretien annuel pendant toute la durée du contrat. Vous suivez votre production avec l'application.</p></li>
     </ol>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="sec contact" id="contact">
+<section class="app" id="application">
   <div class="wrap">
-    <div class="rv">
-      <h2>Joignez votre facture, <em style="color:#FFB37A">on vous rappelle.</em></h2>
-      <p class="lead" style="margin-top:1rem">C'est à partir de votre consommation réelle que notre bureau d'étude dimensionne l'installation et chiffre vos économies. Envoyer votre facture ne vous engage à rien : un conseiller vous rappelle dans la journée.</p>
-      <ul class="promise">
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="rgba(255,255,255,.14)"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Étude personnalisée à partir de votre facture</span></li>
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="rgba(255,255,255,.14)"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Contrôle technique par un installateur partenaire certifié RGE</span></li>
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="rgba(255,255,255,.14)"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Proposition d'abonnement définitive, sans apport ni emprunt</span></li>
-      </ul>
-      <div class="coord"><b>ASL CONSULTING</b><small>Bureau d'étude · Audit · Diagnostics</small><span>01 89 72 00 18</span><span>contact@asl-consulting.fr</span></div>
+    <div class="phone rv"><img src="img/app.jpg" loading="lazy" width="357" height="863" alt="Écran de l'application de suivi de la production solaire"></div>
+    <div class="txt">
+      <h2 class="rv">Optimisez vos consommations d'énergie <em>grâce à l'application.</em></h2>
+      <p class="lead rv d1">Un logiciel de suivi de la production et de l'autoconsommation : vous devenez un gestionnaire actif de votre énergie solaire.</p>
+      <p class="rv d2" style="color:var(--mute)">CO₂ économisé, taux d'autoconsommation, économies réalisées : ces données peuvent être partagées sur écran à destination du public, une façon concrète de communiquer sur votre engagement.</p>
+      <ul class="kpi rv d3"><li>Production en temps réel</li><li>Taux d'autoconsommation</li><li>CO₂ économisé</li><li>Économies réalisées</li></ul>
     </div>
-    <div class="rv d1">
+  </div>
+</section>
+
+<section class="ctx" id="contexte">
+  <div class="wrap">
+    <div class="head rv"><h2>Le solaire devient <em>incontournable.</em></h2><p class="lead">Les obligations se renforcent pour les collectivités et locaux commerciaux, et les dépenses énergétiques doivent être maîtrisées durablement.</p></div>
+    <div class="grid">
+      <div class="rv"><b>2028</b><p>Les bâtiments publics de plus de 500 m², même sans rénovation, doivent intégrer des panneaux solaires ou une végétalisation.</p></div>
+      <div class="rv d1"><b>1 500 m²</b><p>Équipement des parkings existants de plus de 1 500 m² en ombrages ou production d'énergie d'ici 2026-2028 (loi APER).</p></div>
+      <div class="rv d2"><b>-40 %</b><p>de consommation en 2030 pour le tertiaire de plus de 1 000 m², puis -50 % en 2040 et -60 % en 2050 (décret tertiaire).</p></div>
+    </div>
+    <p class="src">Source : brochure ASL Consulting, Observatoire de la transition énergétique des territoires 2025.</p>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div>
+      <h2 class="rv">Joignez votre facture, <em style="color:#FFB37A">on vous rappelle.</em></h2>
+      <p class="lead rv d1" style="margin-top:1rem">C'est à partir de votre consommation réelle que notre bureau d'étude dimensionne l'installation et chiffre vos économies. Envoyer votre facture ne vous engage à rien.</p>
+      <ul class="promise rv d2">
+        <li><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-phone"/></svg>Un conseiller vous rappelle dans la journée</li>
+        <li><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-clipboard"/></svg>Étude sous 24 h, visite technique sous 48 h</li>
+        <li><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-plug"/></svg>Vous conservez votre fournisseur d'électricité</li>
+      </ul>
+      <div class="coord rv d3">
+        <b>ASL CONSULTING</b>
+        <a href="mailto:contact@asl-consulting.fr">contact@asl-consulting.fr</a>
+        <a href="tel:+33189720018">01 89 72 00 18</a>
+        <small>Bureau d'étude, audit, diagnostics. Partout en France.</small>
+      </div>
+    </div>
+    <div>
       <form id="lead" novalidate>
         <div class="two">
           <label for="fOrg">Collectivité ou entreprise <span class="req">*</span><input type="text" id="fOrg" name="org" autocomplete="organization" required></label>
@@ -503,7 +588,7 @@ footer p{max-width:80ch;line-height:1.5}
         <div class="two">
           <label for="fType">Type de bâtiment
             <select id="fType" name="type">
-              <option value="">Choisir</option><option>Bâtiment public / mairie</option><option>Locaux commerciaux</option><option>Usine / atelier</option><option>Entrepôt / logistique</option><option>Parking à équiper</option><option>Autre</option>
+              <option>Usine ou site industriel</option><option>Entrepôt logistique</option><option>Bâtiment tertiaire</option><option>Commerce</option><option>Bâtiment public ou collectivité</option><option>Parking</option><option>Autre</option>
             </select></label>
           <label for="fCity">Commune du site<input type="text" id="fCity" name="city" autocomplete="address-level2"></label>
         </div>
@@ -512,76 +597,68 @@ footer p{max-width:80ch;line-height:1.5}
           <small>PDF ou photo. C'est ce qui permet au bureau d'étude de dimensionner votre installation.</small></label>
         <label for="fMsg">Un mot sur votre projet<textarea id="fMsg" name="msg" placeholder="Surfaces disponibles, nombre de bâtiments, échéance"></textarea></label>
         <p class="err" id="err" aria-live="polite"></p>
-        <button class="btn pri" type="submit">Envoyer ma facture</button>
+        <button class="btn pri" type="submit"><svg class="ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><use href="#i-upload"/></svg>Joindre ma facture</button>
       </form>
-      <div class="done" id="done" hidden>
-        <h3>Votre demande est prête</h3>
-        <p style="color:var(--mute)">Envoyez ce récapitulatif et votre facture à <b>contact@asl-consulting.fr</b>, ou appelez le 01 89 72 00 18. Un conseiller vous rappelle dans la journée.</p>
-        <pre id="summary"></pre>
-        <div class="actions"><button class="btn pri" type="button" id="copy">Copier ma demande</button><button class="btn sec" type="button" id="edit">Modifier</button></div>
+      <div class="done" id="done" aria-live="polite">
+        <h3>Merci, votre demande est prête.</h3>
+        <p>Votre messagerie s'ouvre avec le récapitulatif ci-dessous. Pensez à y joindre votre facture avant d'envoyer, puis un conseiller vous rappelle dans la journée.</p>
+        <pre id="recap"></pre>
+        <div class="actions"><a class="btn pri" id="mailAgain" href="#">Rouvrir l'e-mail</a><a class="btn sec" href="tel:+33189720018">Appeler le 01 89 72 00 18</a></div>
       </div>
     </div>
   </div>
 </section>
+
 </main>
 
-<footer><div class="wrap">
-  <div class="row"><span><b>ASL CONSULTING</b>, entreprise à mission</span><span>01 89 72 00 18 · contact@asl-consulting.fr</span></div>
-  <p>Notre mission est inscrite dans nos statuts : rendre les avantages de l'énergie solaire accessibles à tous. Spécialiste de l'autoconsommation individuelle et collective pour des installations de toutes puissances, en partenariat avec un réseau d'installateurs locaux certifiés RGE, partout en France.</p>
-</div></footer>
+<footer>
+  <div class="wrap">
+    <div class="row"><b>ASL CONSULTING, entreprise à mission</b><span>contact@asl-consulting.fr</span><span>01 89 72 00 18</span></div>
+    <p>Notre mission est inscrite dans nos statuts : rendre les avantages de l'énergie solaire accessibles à tous. Pour les collectivités, les entreprises et les particuliers, en partenariat avec un réseau d'installateurs locaux certifiés RGE, partout en France.</p>
+  </div>
+</footer>
+
 <div class="dock" id="dock"><a class="btn pri" href="#contact">Joindre ma facture</a></div>
 
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js" defer></script>
 <script>
 (() => {
-"use strict";
 const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
-const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-const fine = matchMedia("(hover:hover) and (pointer:fine)").matches;
 document.documentElement.classList.add("js");
-
-/* header + dock */
-const bar = $("#bar"), dock = $("#dock");
-const sentinel = document.createElement("div"); sentinel.style.cssText = "position:absolute;top:40px;height:1px;width:1px"; document.body.prepend(sentinel);
-new IntersectionObserver(([e]) => bar.classList.toggle("solid", !e.isIntersecting)).observe(sentinel);
-new IntersectionObserver(([e]) => dock.classList.toggle("on", !e.isIntersecting && e.boundingClientRect.top < 0), { threshold: 0 }).observe($("#hero"));
-
-/* apparition au défilement (sécurité : tout visible après 3 s) */
-const rv = $$(".rv");
-const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .08, rootMargin: "0px 0px -4% 0px" });
-rv.forEach(el => io.observe(el));
-setTimeout(() => rv.forEach(el => { if (el.getBoundingClientRect().top < innerHeight) el.classList.add("in"); }), 3000);
-
-/* chiffres qui défilent */
+const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const fmt = new Intl.NumberFormat("fr-FR");
-const cio = new IntersectionObserver(es => es.forEach(e => {
-  if (!e.isIntersecting) return; cio.unobserve(e.target);
-  const el = e.target, to = +el.dataset.to, dur = 1600 + Math.min(1400, to / 8), t0 = performance.now();
-  if (reduced || !to) { el.textContent = fmt.format(to); return; }
-  (function tick(t){ const p = Math.min(1, (t - t0) / dur), v = Math.round(to * (1 - Math.pow(1 - p, 3))); el.textContent = fmt.format(v); if (p < 1) requestAnimationFrame(tick); })(t0);
+
+/* header + dock : observateur, pas de listener scroll */
+const bar = $("#bar"), dock = $("#dock");
+const sentinel = document.createElement("div"); sentinel.style.cssText = "position:absolute;top:0;height:1px;width:1px"; document.body.prepend(sentinel);
+let atTop = true, atContact = false;
+const syncDock = () => dock.classList.toggle("on", !atTop && !atContact);
+new IntersectionObserver(([e]) => { atTop = e.isIntersecting; bar.classList.toggle("on", !atTop); syncDock(); }).observe(sentinel);
+new IntersectionObserver(([e]) => { atContact = e.isIntersecting; syncDock(); }, { threshold: .1 }).observe($("#contact"));
+
+/* révélation */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px", threshold: .05 });
+$$(".rv").forEach(el => io.observe(el));
+setTimeout(() => $$(".rv:not(.in)").forEach(el => { if (el.getBoundingClientRect().top < innerHeight) el.classList.add("in"); }), 1200);
+
+/* compteurs */
+const co = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return; co.unobserve(e.target);
+  const el = e.target, to = +el.dataset.to, d = reduced ? 0 : 1600, t0 = performance.now();
+  (function step(t){ const u = d ? Math.min(1, (t - t0) / d) : 1, k = 1 - Math.pow(1 - u, 3); el.textContent = fmt.format(Math.round(to * k)); if (u < 1) requestAnimationFrame(step); })(t0);
 }), { threshold: .6 });
-$$(".count").forEach(el => cio.observe(el));
+$$(".count").forEach(el => co.observe(el));
 
-/* diaporama du haut de page */
-const slides = $$("#slides img"), dots = $$("#dots i"); let cur = 0;
-if (!reduced) setInterval(() => { slides[cur].classList.remove("on"); dots[cur].classList.remove("on"); cur = (cur + 1) % slides.length; slides[cur].classList.add("on"); dots[cur].classList.add("on"); }, 7000);
-
-/* cartes en relief au survol */
-if (fine && !reduced) $$(".tilt").forEach(el => {
-  el.addEventListener("pointermove", e => { const r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; el.style.transform = `perspective(900px) rotateX(${-y * 6}deg) rotateY(${x * 8}deg) translateY(-4px)`; });
-  el.addEventListener("pointerleave", () => { el.style.transform = ""; });
-});
-
-/* simulateur : proportionnel au dossier type (5 300 €/mois, 15 ans) */
+/* simulateur : proportionnel au dossier type (5 300 €/mois → 3 700 €, 15 ans) */
 const REF = { bill: 5300, after: 3700, save1: 18500, save15: 30000, sub15: 17000 };
-const G = Math.pow(REF.save15 / REF.save1, 1 / 14) - 1;      // ≈ +3,5 % par an
+const G = Math.pow(REF.save15 / REF.save1, 1 / 14) - 1;
 const eur = v => fmt.format(Math.round(v)) + " €";
 const bill = $("#bill"), years = $("#years");
 function simulate(B, N){
   const r = B / REF.bill, save1 = REF.save1 * r, sub = REF.sub15 * r * 15 / N;
   const pts = [0]; let c = 0, net1 = 0, after = 0;
   for (let y = 1; y <= 30; y++) { const sv = save1 * Math.pow(1 + G, y - 1); const n = y <= N ? sv - sub : sv; if (y === 1) net1 = n; if (y === N + 1) after = sv; c += n; pts.push(c); }
-  return { save1, sub, net1, after, pts, cumN: pts[Math.min(N, 30)], cum30: pts[30], after: after || save1 * Math.pow(1 + G, N) };
+  return { save1, sub, net1, pts, cumN: pts[Math.min(N, 30)], cum30: pts[30], after: after || save1 * Math.pow(1 + G, N) };
 }
 function niceStep(max){ const raw = max / 4, p = Math.pow(10, Math.floor(Math.log10(raw))); const n = raw / p; return (n <= 1 ? 1 : n <= 2 ? 2 : n <= 2.5 ? 2.5 : n <= 5 ? 5 : 10) * p; }
 function shortEur(v){ return v >= 1e6 ? (v/1e6).toLocaleString("fr-FR",{maximumFractionDigits:1}) + " M€" : v >= 1e3 ? fmt.format(Math.round(v/1e3)) + " k€" : fmt.format(v) + " €"; }
@@ -590,12 +667,12 @@ function drawChart(pts, N){
   const step = niceStep(pts[30]), top = Math.ceil(pts[30] / step) * step;
   const x = y => L + (W - L - R) * y / 30, yy = v => T + (H - T - B) * (1 - v / top);
   let g = "";
-  for (let v = 0; v <= top + 1e-6; v += step) g += `<line x1="${L}" x2="${W-R}" y1="${yy(v)}" y2="${yy(v)}" stroke="rgba(31,35,40,${v?0.08:0.3})"/><text x="${L-8}" y="${yy(v)+4}" text-anchor="end">${shortEur(v)}</text>`;
+  for (let v = 0; v <= top + 1e-6; v += step) g += `<line x1="${L}" x2="${W-R}" y1="${yy(v)}" y2="${yy(v)}" stroke="currentColor" stroke-opacity="${v?0.08:0.3}"/><text x="${L-8}" y="${yy(v)+4}" text-anchor="end">${shortEur(v)}</text>`;
   for (const t of [0,5,10,15,20,25,30]) g += `<text x="${x(t)}" y="${H-12}" text-anchor="middle">${t === 0 ? "An 0" : t}</text>`;
   const seg = (a, b) => pts.slice(a, b + 1).map((v, i) => `L${x(a + i).toFixed(1)},${yy(v).toFixed(1)}`).join("");
-  g += `<path d="M${x(0)},${yy(0)}${seg(0, N)}L${x(N)},${yy(0)}Z" fill="rgba(242,92,5,.14)"/>`;
-  g += `<path d="M${x(N)},${yy(0)}${seg(N, 30)}L${x(30)},${yy(0)}Z" fill="rgba(242,92,5,.32)"/>`;
-  g += `<line x1="${x(N)}" x2="${x(N)}" y1="${T-8}" y2="${yy(0)}" stroke="rgba(31,35,40,.35)" stroke-dasharray="3 4"/>`;
+  g += `<path d="M${x(0)},${yy(0)}${seg(0, N)}L${x(N)},${yy(0)}Z" fill="#F25C05" fill-opacity=".14"/>`;
+  g += `<path d="M${x(N)},${yy(0)}${seg(N, 30)}L${x(30)},${yy(0)}Z" fill="#F25C05" fill-opacity=".32"/>`;
+  g += `<line x1="${x(N)}" x2="${x(N)}" y1="${T-8}" y2="${yy(0)}" stroke="currentColor" stroke-opacity=".35" stroke-dasharray="3 4"/>`;
   g += `<text x="${x(N)-6}" y="${T+4}" text-anchor="end">Abonnement</text><text x="${x(N)+6}" y="${T+4}" style="fill:#F25C05;font-weight:600">Sans abonnement</text>`;
   g += `<path d="M${x(0)},${yy(0)}${seg(0, 30)}" fill="none" stroke="#F25C05" stroke-width="2.5" stroke-linejoin="round"/>`;
   g += `<circle cx="${x(N)}" cy="${yy(pts[N])}" r="4.5" fill="#fff" stroke="#F25C05" stroke-width="2"/>`;
@@ -609,7 +686,7 @@ function updateSim(){
   years.style.setProperty("--f", ((N - years.min) / (years.max - years.min) * 100) + "%");
   $("#billOut").innerHTML = `${fmt.format(B)} <small>€ / mois</small>`;
   $("#yearsOut").innerHTML = `${N} <small>ans</small>`;
-  const after = B * REF.after / REF.bill;   // -30 %, comme le dossier type
+  const after = B * REF.after / REF.bill;
   $("#bBefore").textContent = eur(B); $("#bAfter").textContent = eur(after);
   $("#bPct").textContent = "-" + Math.round((1 - after / B) * 100) + " %";
   $("#oSave").textContent = eur(r.save1); $("#oSub").textContent = eur(r.sub / 12);
@@ -620,43 +697,33 @@ function updateSim(){
 }
 bill.addEventListener("input", updateSim); years.addEventListener("input", updateSim); updateSim();
 
-/* formulaire */
-const form = $("#lead"), done = $("#done");
+/* formulaire : récapitulatif + e-mail */
+const form = $("#lead"), done = $("#done"), err = $("#err");
 form.addEventListener("submit", e => {
-  e.preventDefault();
-  const f = Object.fromEntries(new FormData(form));
-  const miss = [];
-  if (!f.org.trim()) miss.push("votre collectivité ou entreprise");
-  if (!f.name.trim()) miss.push("votre nom");
-  if (!/[0-9]{6,}/.test(f.phone.replace(/\D/g, ""))) miss.push("un téléphone valide");
-  const inv = $("#fInvoice").files[0];
-  if (!inv) miss.push("votre facture d'électricité en pièce jointe");
-  if (miss.length) { $("#err").textContent = "Il manque " + miss.join(", ") + "."; return; }
-  $("#err").textContent = "";
-  $("#summary").textContent =
-`Demande d'étude, abonnement solaire ASL CONSULTING
-Organisation : ${f.org}
-Contact : ${f.name}
-Téléphone : ${f.phone}${f.email ? "\nE-mail : " + f.email : ""}${f.type ? "\nType de bâtiment : " + f.type : ""}${f.city ? "\nCommune : " + f.city : ""}
-Facture jointe : ${inv.name}${f.msg ? "\nProjet : " + f.msg : ""}`;
-  form.hidden = true; done.hidden = false;
-});
-$("#edit").addEventListener("click", () => { done.hidden = true; form.hidden = false; });
-$("#copy").addEventListener("click", async e => {
-  const b = e.currentTarget, txt = $("#summary").textContent;
-  try { await navigator.clipboard.writeText(txt); b.textContent = "Copié"; }
-  catch { const r = document.createRange(); r.selectNodeContents($("#summary")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = "Texte sélectionné, copiez-le"; }
-  setTimeout(() => b.textContent = "Copier ma demande", 2500);
+  e.preventDefault(); err.textContent = "";
+  const v = id => $(id).value.trim();
+  const missing = [["#fOrg","la collectivité ou l'entreprise"],["#fName","votre nom et fonction"],["#fPhone","votre téléphone"]].filter(([id]) => !v(id)).map(([,l]) => l);
+  if (missing.length) { err.textContent = "Merci de renseigner " + missing.join(", ") + "."; return; }
+  const f = $("#fInvoice").files[0];
+  const body = [
+    `Collectivité / entreprise : ${v("#fOrg")}`, `Contact : ${v("#fName")}`, `Téléphone : ${v("#fPhone")}`, `E-mail : ${v("#fMail") || "non renseigné"}`,
+    `Type de bâtiment : ${v("#fType")}`, `Commune : ${v("#fCity") || "non renseignée"}`,
+    `Facture jointe : ${f ? f.name : "à joindre à cet e-mail"}`, `Projet : ${v("#fMsg") || "-"}`,
+    `Simulation : ${bill.value} € / mois, abonnement ${years.value} ans`
+  ].join("\n");
+  const href = `mailto:contact@asl-consulting.fr?subject=${encodeURIComponent("Demande d'étude, facture jointe : " + v("#fOrg"))}&body=${encodeURIComponent(body + "\n\n")}`;
+  $("#recap").textContent = body; $("#mailAgain").href = href;
+  form.style.display = "none"; done.classList.add("on"); location.href = href;
 });
 
-/* 3D : panneau en vue éclatée */
-(function panelView(){
+/* 3D : panneau en vue éclatée (three.js, chargé en différé) */
+function panelView(){
   let ok = false;
   try { const c = document.createElement("canvas"); ok = !!(window.THREE && (c.getContext("webgl2") || c.getContext("webgl"))); } catch { ok = false; }
   if (!ok) { document.documentElement.classList.add("nogl"); return; }
   const T = THREE, canvas = $("#panelGL"), stage = canvas.parentElement, sec = $("#centrale");
-  const renderer = new T.WebGLRenderer({ canvas, antialias: true, alpha: true });
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 1.75));
+  const renderer = new T.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: "low-power" });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
   renderer.toneMapping = T.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.1;
   const scene = new T.Scene(), cam = new T.PerspectiveCamera(30, 1, .1, 100);
   scene.add(new T.HemisphereLight(0xffffff, 0xb0a59a, 1.3));
@@ -691,11 +758,12 @@ $("#copy").addEventListener("click", async e => {
   const holders = layers.map((ms, i) => { const h = new T.Group(); ms.forEach(m => h.add(m)); h.position.y = restY[i]; grp.add(h); return h; });
   const items = $$("#layers li");
   let visible = false, active = 0, t0 = null, mx = 0, sx = 0;
-  addEventListener("pointermove", e => { mx = e.clientX / innerWidth - .5; }, { passive: true });
+  stage.addEventListener("pointermove", e => { const r = stage.getBoundingClientRect(); mx = (e.clientX - r.left) / r.width - .5; }, { passive: true });
+  stage.addEventListener("pointerleave", () => { mx = 0; });
   function resize(){ const w = stage.clientWidth, h = stage.clientHeight; renderer.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix(); }
   function frame(t){
     requestAnimationFrame(frame);
-    if (!visible) return;
+    if (!visible || document.hidden) return;
     if (t0 === null) t0 = t;
     const cycle = 14000, u = reduced ? .5 : ((t - t0) % cycle) / cycle;
     const ex = Math.sin(Math.min(1, u / .92) * Math.PI) ** .7;
@@ -712,6 +780,9 @@ $("#copy").addEventListener("click", async e => {
   resize(); addEventListener("resize", resize);
   new IntersectionObserver(es => { visible = es[0].isIntersecting; }, { rootMargin: "100px" }).observe(sec);
   requestAnimationFrame(frame);
-})();
+}
+if (window.THREE) panelView(); else { const s = document.querySelector('script[src*="three"]'); s.addEventListener("load", panelView); s.addEventListener("error", () => document.documentElement.classList.add("nogl")); }
 })();
 </script>
+</body>
+</html>
