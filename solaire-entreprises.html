@@ -133,6 +133,51 @@ ul,ol{margin:0;padding:0;list-style:none}
 .flow b .count{font:inherit;color:inherit}
 .flow .arr{width:38px;height:38px;border-radius:50%;background:var(--or);color:#fff;display:grid;place-items:center;font:700 1.2rem/1 var(--display)}
 
+/* simulateur */
+.sim{display:grid;gap:1.5rem}
+.sim .ctl{display:grid;gap:1.3rem;align-content:start;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.5rem}
+.sim label{display:grid;gap:.45rem;font-size:.95rem;color:var(--mute);font-weight:600}
+.sim .big{font:800 clamp(2.2rem,4.6vw,3.2rem)/1 var(--display);color:var(--ink);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.sim .big small{font-size:.4em;color:var(--mute);font-weight:600;letter-spacing:0}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:32px;background:transparent;cursor:pointer;margin:0}
+input[type=range]::-webkit-slider-runnable-track{height:8px;border-radius:4px;background:linear-gradient(90deg,var(--or) var(--f,20%),rgba(31,35,40,.12) var(--f,20%))}
+input[type=range]::-moz-range-track{height:8px;border-radius:4px;background:rgba(31,35,40,.12)}
+input[type=range]::-moz-range-progress{height:8px;border-radius:4px;background:var(--or)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:50%;background:#fff;border:7px solid var(--or);margin-top:-10px;box-shadow:0 4px 12px rgba(0,0,0,.18)}
+input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:#fff;border:7px solid var(--or)}
+.rng{display:flex;justify-content:space-between;font-size:.82rem;color:var(--dim);font-weight:400}
+.before{display:grid;grid-template-columns:1fr auto 1fr;gap:.6rem;align-items:center;padding:1.1rem;background:var(--soft);border-radius:14px}
+.before div{display:grid;gap:.1rem;text-align:center}
+.before b{font:800 clamp(1.35rem,2.4vw,1.9rem)/1 var(--display);font-variant-numeric:tabular-nums;white-space:nowrap}
+.before .b1 b{color:var(--mute);text-decoration:line-through;text-decoration-thickness:3px;text-decoration-color:var(--or)}
+.before .b2 b{color:var(--or)}
+.before span{font-size:.8rem;color:var(--mute)}
+.before .pct{width:60px;height:60px;border-radius:50%;background:var(--or);color:#fff;display:grid;place-items:center;font:800 .95rem/1 var(--display)}
+.out{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.out div{background:var(--card);padding:1rem 1.1rem;display:grid;gap:.2rem}
+.out b{font:700 clamp(1.25rem,2.3vw,1.7rem)/1.1 var(--display);font-variant-numeric:tabular-nums;white-space:nowrap}
+.out div{align-content:start}
+.out b.o{color:var(--or)}
+.out span{font-size:.84rem;color:var(--mute);line-height:1.35}
+.chart{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.3rem 1.1rem 1rem;display:grid;gap:.6rem;grid-template-rows:auto 1fr auto;align-items:center}
+.chart .top{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:baseline}
+.chart .top b{font:600 1.05rem/1.2 var(--display)}
+.chart .top span{font-size:.85rem;color:var(--mute)}
+.chart svg{width:100%;height:auto;overflow:visible}
+.chart svg text{font:500 11px var(--body);fill:var(--dim)}
+.chart .tot{font:600 13px var(--display);fill:var(--ink)}
+.how{display:grid;gap:1rem;margin-top:1.5rem}
+.how div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1.1rem 1.2rem;display:grid;gap:.25rem}
+.how b{font:800 1.7rem/1 var(--display);color:var(--or);font-variant-numeric:tabular-nums}
+.how b small{font-size:.5em;color:var(--ink);font-weight:600}
+.how span{font-size:.9rem;color:var(--mute)}
+.fine{font-size:.84rem;color:var(--dim);line-height:1.5;max-width:90ch;margin-top:1.2rem}
+.guar{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-top:1.5rem}
+.guar div{background:var(--card);padding:1.1rem 1.1rem;display:grid;gap:.15rem}
+.guar b{font:800 1.6rem/1 var(--display);color:var(--or);font-variant-numeric:tabular-nums}
+.guar b small{font-size:.5em;color:var(--ink);font-weight:600;margin-left:.1em}
+.guar span{font-size:.86rem;color:var(--mute)}
+
 /* 3D panneau */
 .panel3d .wrap{display:grid;gap:1.4rem;align-items:center}
 .pstage{position:relative;aspect-ratio:4/3;width:100%;border-radius:var(--r);background:radial-gradient(75% 75% at 50% 40%,#FFFFFF,#F3E9E1);border:1px solid var(--line);overflow:hidden;box-shadow:var(--shadow)}
@@ -213,6 +258,9 @@ footer p{max-width:80ch;line-height:1.5}
   .cards{grid-template-columns:repeat(4,1fr)}
   .adv{grid-template-columns:repeat(3,1fr)}
   .surplus{grid-template-columns:1.1fr .9fr;gap:3.5rem}
+  .sim{grid-template-columns:.85fr 1.15fr;gap:2rem}
+  .how{grid-template-columns:repeat(3,1fr)}
+  .guar{grid-template-columns:repeat(4,1fr)}
   .panel3d .wrap{grid-template-columns:1.15fr .85fr;gap:3rem}
   .contact .wrap{grid-template-columns:.9fr 1.1fr;gap:4rem}
 }
@@ -228,7 +276,7 @@ footer p{max-width:80ch;line-height:1.5}
 <header class="bar" id="bar"><div class="wrap">
   <a class="brand" href="#top" aria-label="ASL Consulting, accueil"><b>ASL CONSULTING</b><small>Bureau d'étude · Audit · Diagnostics</small></a>
   <nav class="nav" aria-label="Sections">
-    <a href="#abonnement">L'abonnement</a><a href="#avantages">Avantages</a><a href="#surplus">Autoconsommation</a><a href="#process">Le process</a>
+    <a href="#abonnement">L'abonnement</a><a href="#simulateur">Simulateur</a><a href="#surplus">Autoconsommation</a><a href="#process">Le process</a>
   </nav>
   <a class="btn pri" href="#contact">Joindre ma facture</a>
 </div></header>
@@ -250,7 +298,7 @@ footer p{max-width:80ch;line-height:1.5}
     <p class="lead rv d2">Sans apport, sans investissement, sans crédit bancaire : équipez-vous, produisez et consommez votre propre énergie solaire. Partout en France, avec des installateurs locaux certifiés RGE.</p>
     <div class="actions rv d3">
       <a class="btn pri" href="#contact">Joindre ma facture</a>
-      <a class="btn sec" href="#abonnement">Découvrir l'abonnement</a>
+      <a class="btn sec" href="#simulateur">Simuler mes économies</a>
     </div>
   </div></div></div>
   <div class="dots" id="dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
@@ -272,19 +320,19 @@ footer p{max-width:80ch;line-height:1.5}
 <!-- BANDE D'IMAGES -->
 <div class="strip" aria-label="Installations">
   <div class="track" id="track">
-    <figure><img src="img/usine.jpg" alt="Usine aux toitures couvertes de panneaux solaires" loading="lazy"><figcaption>Usines et ateliers</figcaption></figure>
-    <figure><img src="img/logistique.jpg" alt="Plateforme logistique au toit solaire" loading="lazy"><figcaption>Plateformes logistiques</figcaption></figure>
-    <figure><img src="img/ombrieres.jpg" alt="Ombrières solaires sur un parking d'entreprise" loading="lazy"><figcaption>Ombrières de parking</figcaption></figure>
-    <figure><img src="img/village.jpg" alt="Bâtiments publics d'un village équipés de panneaux solaires" loading="lazy"><figcaption>Bâtiments publics</figcaption></figure>
-    <figure><img src="img/ombrieres_pose.jpg" alt="Techniciens posant des panneaux sur une ombrière" loading="lazy"><figcaption>Pose par installateur RGE</figcaption></figure>
-    <figure><img src="img/chantier.jpg" alt="Techniciens sur une toiture industrielle" loading="lazy"><figcaption>Toitures industrielles</figcaption></figure>
+    <figure><img src="img/usine_s.jpg" alt="Usine aux toitures couvertes de panneaux solaires" loading="lazy"><figcaption>Usines et ateliers</figcaption></figure>
+    <figure><img src="img/logistique_s.jpg" alt="Plateforme logistique au toit solaire" loading="lazy"><figcaption>Plateformes logistiques</figcaption></figure>
+    <figure><img src="img/ombrieres_s.jpg" alt="Ombrières solaires sur un parking d'entreprise" loading="lazy"><figcaption>Ombrières de parking</figcaption></figure>
+    <figure><img src="img/village_s.jpg" alt="Bâtiments publics d'un village équipés de panneaux solaires" loading="lazy"><figcaption>Bâtiments publics</figcaption></figure>
+    <figure><img src="img/ombrieres_pose_s.jpg" alt="Techniciens posant des panneaux sur une ombrière" loading="lazy"><figcaption>Pose par installateur RGE</figcaption></figure>
+    <figure><img src="img/chantier_s.jpg" alt="Techniciens sur une toiture industrielle" loading="lazy"><figcaption>Toitures industrielles</figcaption></figure>
   
-    <figure><img src="img/usine.jpg" alt="Usine aux toitures couvertes de panneaux solaires" loading="lazy"><figcaption>Usines et ateliers</figcaption></figure>
-    <figure><img src="img/logistique.jpg" alt="Plateforme logistique au toit solaire" loading="lazy"><figcaption>Plateformes logistiques</figcaption></figure>
-    <figure><img src="img/ombrieres.jpg" alt="Ombrières solaires sur un parking d'entreprise" loading="lazy"><figcaption>Ombrières de parking</figcaption></figure>
-    <figure><img src="img/village.jpg" alt="Bâtiments publics d'un village équipés de panneaux solaires" loading="lazy"><figcaption>Bâtiments publics</figcaption></figure>
-    <figure><img src="img/ombrieres_pose.jpg" alt="Techniciens posant des panneaux sur une ombrière" loading="lazy"><figcaption>Pose par installateur RGE</figcaption></figure>
-    <figure><img src="img/chantier.jpg" alt="Techniciens sur une toiture industrielle" loading="lazy"><figcaption>Toitures industrielles</figcaption></figure>
+    <figure><img src="img/usine_s.jpg" alt="Usine aux toitures couvertes de panneaux solaires" loading="lazy"><figcaption>Usines et ateliers</figcaption></figure>
+    <figure><img src="img/logistique_s.jpg" alt="Plateforme logistique au toit solaire" loading="lazy"><figcaption>Plateformes logistiques</figcaption></figure>
+    <figure><img src="img/ombrieres_s.jpg" alt="Ombrières solaires sur un parking d'entreprise" loading="lazy"><figcaption>Ombrières de parking</figcaption></figure>
+    <figure><img src="img/village_s.jpg" alt="Bâtiments publics d'un village équipés de panneaux solaires" loading="lazy"><figcaption>Bâtiments publics</figcaption></figure>
+    <figure><img src="img/ombrieres_pose_s.jpg" alt="Techniciens posant des panneaux sur une ombrière" loading="lazy"><figcaption>Pose par installateur RGE</figcaption></figure>
+    <figure><img src="img/chantier_s.jpg" alt="Techniciens sur une toiture industrielle" loading="lazy"><figcaption>Toitures industrielles</figcaption></figure>
   </div>
 </div>
 
@@ -319,8 +367,63 @@ footer p{max-width:80ch;line-height:1.5}
   </div>
 </section>
 
+<!-- SIMULATEUR -->
+<section class="sec alt" id="simulateur">
+  <div class="wrap">
+    <div class="head rv">
+      <h2>Plus de 30 % d'économie sur votre facture d'électricité, <em>hors abonnement.</em></h2>
+      <p class="lead">Réglez votre facture mensuelle et la durée d'abonnement : le simulateur reproduit, à l'échelle de votre site, le dossier type étudié par notre bureau d'étude.</p>
+    </div>
+    <div class="sim">
+      <div class="ctl rv">
+        <label for="bill">Votre facture d'électricité mensuelle
+          <span class="big" id="billOut">5 300 <small>€ / mois</small></span>
+          <input type="range" id="bill" min="1000" max="30000" step="100" value="5300">
+          <span class="rng"><span>1 000 €</span><span>30 000 €</span></span>
+        </label>
+        <label for="years">Durée de l'abonnement
+          <span class="big" id="yearsOut">15 <small>ans</small></span>
+          <input type="range" id="years" min="10" max="25" step="5" value="15">
+          <span class="rng"><span>10 ans</span><span>25 ans</span></span>
+        </label>
+        <div class="before">
+          <div class="b1"><b id="bBefore">5 300 €</b><span>facture actuelle</span></div>
+          <span class="pct" id="bPct">-30 %</span>
+          <div class="b2"><b id="bAfter">3 700 €</b><span>facture après, hors abonnement</span></div>
+        </div>
+        <div class="out">
+          <div><b class="o" id="oSave">…</b><span>d'économie d'électricité la 1re année</span></div>
+          <div><b id="oSub">…</b><span>d'abonnement par mois, tout compris</span></div>
+          <div><b class="o" id="oNet">…</b><span>de gain net la 1re année, abonnement déduit</span></div>
+          <div><b class="o" id="oAfter">…</b><span id="oAfterLbl">par an, une fois l'abonnement terminé</span></div>
+        </div>
+      </div>
+      <div class="chart rv d1">
+        <div class="top"><b>Gain net cumulé sur 30 ans</b><span>€, abonnement déduit</span></div>
+        <svg id="chart" viewBox="0 0 640 300" role="img" aria-label="Gain net cumulé sur 30 ans"></svg>
+        <div class="out" style="margin-top:.4rem">
+          <div><b id="oCum">…</b><span id="oCumLbl">cumulés pendant l'abonnement</span></div>
+          <div><b class="o" id="oCum30">…</b><span>cumulés sur 30 ans</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="how">
+      <div class="rv"><b>0,15 → 0,02<small> €/kWh</small></b><span>L'électricité autoconsommée vous coûte 0,02 € le kWh au lieu de 0,15 €, soit 85 % de moins hors abonnement.</span></div>
+      <div class="rv d1"><b>72<small> %</small></b><span>de taux d'autoconsommation : la part de votre consommation couverte par votre propre production.</span></div>
+      <div class="rv d2"><b>+3,5<small> % / an</small></b><span>Vos économies progressent chaque année avec le prix de l'électricité : de 18 500 € à 30 000 € par an sur 15 ans pour le dossier type.</span></div>
+    </div>
+    <div class="guar rv">
+      <div><b>25<small>ans</small></b><span>de garantie matériel sur les panneaux</span></div>
+      <div><b>30<small>ans</small></b><span>de garantie de rendement</span></div>
+      <div><b>10<small>ans</small></b><span>de garantie sur les onduleurs</span></div>
+      <div><b>24<small>h</small></b><span>pour recevoir votre étude à partir de votre facture</span></div>
+    </div>
+    <p class="fine">Simulation indicative, proportionnelle au dossier type (facture de 5 300 € par mois, abonnement 15 ans). Installation de base hors batteries de stockage, ajout possible pour une utilisation nocturne. Le montant exact dépend de votre consommation et de vos surfaces : il est chiffré par le bureau d'étude et inscrit dans votre proposition d'abonnement.</p>
+  </div>
+</section>
+
 <!-- SURPLUS / AUTOCONSOMMATION COLLECTIVE -->
-<section class="sec alt" id="surplus">
+<section class="sec" id="surplus">
   <div class="wrap surplus">
     <div>
       <h2 class="rv">Votre toiture produit plus que vous ne consommez ? <em>Le surplus se revend aux alentours.</em></h2>
@@ -332,7 +435,7 @@ footer p{max-width:80ch;line-height:1.5}
       </div>
       <ul class="promise rv d3" style="color:var(--mute)">
         <li style="color:var(--mute)"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#FFF0E6"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#F25C05" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Partage de l'électricité entre bâtiments publics, extension possible aux entreprises et aux habitants</span></li>
-        <li style="color:var(--mute)"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#FFF0E6"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#F25C05" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Le surplus non partagé est revendu au tarif de rachat négocié avec l'acheteur obligé</span></li>
+        <li style="color:var(--mute)"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#FFF0E6"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#F25C05" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Le surplus peut être revendu au réseau ou cédé jusqu'à 300 mètres, au tarif de rachat négocié avec l'acheteur obligé</span></li>
         <li style="color:var(--mute)"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#FFF0E6"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#F25C05" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>CO₂ économisé, taux d'autoconsommation et économies visibles dans l'application, et partageables sur écran</span></li>
       </ul>
     </div>
@@ -341,7 +444,7 @@ footer p{max-width:80ch;line-height:1.5}
 </section>
 
 <!-- PANNEAU 3D -->
-<section class="sec panel3d" id="centrale">
+<section class="sec alt panel3d" id="centrale">
   <div class="wrap">
     <div class="pstage rv"><canvas id="panelGL" aria-hidden="true"></canvas></div>
     <div style="display:grid;gap:1rem" class="rv d1">
@@ -361,13 +464,13 @@ footer p{max-width:80ch;line-height:1.5}
 </section>
 
 <!-- PROCESS -->
-<section class="sec alt" id="process">
+<section class="sec" id="process">
   <div class="wrap">
     <div class="head rv"><h2>Le process <em>en 5 étapes.</em></h2></div>
     <ol class="steps rv">
-      <li><b>Identification du besoin</b><p>Selon vos usages, votre consommation, vos bâtiments et surfaces disponibles. Nous étudions votre projet et proposons une solution clef en main.</p></li>
-      <li><b>Étude personnalisée</b><p>Notre installateur partenaire effectue un contrôle technique rigoureux. Proposition d'abonnement définitive, pour maximiser votre autoconsommation.</p></li>
-      <li><b>Contrat d'abonnement</b><p>Vous signez votre contrat et le mandat de prélèvement SEPA. Les démarches administratives sont lancées.</p></li>
+      <li><b>Identification du besoin</b><p>À partir de votre facture d'électricité, nous étudions votre projet et vous remettons une étude sous 24 h : solution clef en main selon vos usages et vos surfaces.</p></li>
+      <li><b>Étude personnalisée</b><p>Un conseiller technique valide le devis sur place après un contrôle rigoureux. Proposition d'abonnement définitive, pour maximiser votre autoconsommation.</p></li>
+      <li><b>Contrat d'abonnement</b><p>Vous signez votre contrat et le mandat de prélèvement SEPA. Les démarches administratives, mairie comprise, sont intégralement prises en charge.</p></li>
       <li><b>Pose et mise en service</b><p>Notre partenaire installateur pose, raccorde et met en service votre centrale. Votre abonnement démarre.</p></li>
       <li><b>Optimisation</b><p>Vous suivez votre production dans l'application et générez des économies dès la première année. Entretien annuel et garantie de bon fonctionnement assurés.</p></li>
     </ol>
@@ -468,6 +571,54 @@ if (fine && !reduced) $$(".tilt").forEach(el => {
   el.addEventListener("pointermove", e => { const r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; el.style.transform = `perspective(900px) rotateX(${-y * 6}deg) rotateY(${x * 8}deg) translateY(-4px)`; });
   el.addEventListener("pointerleave", () => { el.style.transform = ""; });
 });
+
+/* simulateur : proportionnel au dossier type (5 300 €/mois, 15 ans) */
+const REF = { bill: 5300, after: 3700, save1: 18500, save15: 30000, sub15: 17000 };
+const G = Math.pow(REF.save15 / REF.save1, 1 / 14) - 1;      // ≈ +3,5 % par an
+const eur = v => fmt.format(Math.round(v)) + " €";
+const bill = $("#bill"), years = $("#years");
+function simulate(B, N){
+  const r = B / REF.bill, save1 = REF.save1 * r, sub = REF.sub15 * r * 15 / N;
+  const pts = [0]; let c = 0, net1 = 0, after = 0;
+  for (let y = 1; y <= 30; y++) { const sv = save1 * Math.pow(1 + G, y - 1); const n = y <= N ? sv - sub : sv; if (y === 1) net1 = n; if (y === N + 1) after = sv; c += n; pts.push(c); }
+  return { save1, sub, net1, after, pts, cumN: pts[Math.min(N, 30)], cum30: pts[30], after: after || save1 * Math.pow(1 + G, N) };
+}
+function niceStep(max){ const raw = max / 4, p = Math.pow(10, Math.floor(Math.log10(raw))); const n = raw / p; return (n <= 1 ? 1 : n <= 2 ? 2 : n <= 2.5 ? 2.5 : n <= 5 ? 5 : 10) * p; }
+function shortEur(v){ return v >= 1e6 ? (v/1e6).toLocaleString("fr-FR",{maximumFractionDigits:1}) + " M€" : v >= 1e3 ? fmt.format(Math.round(v/1e3)) + " k€" : fmt.format(v) + " €"; }
+function drawChart(pts, N){
+  const W = 640, H = 300, L = 60, R = 16, T = 28, B = 34;
+  const step = niceStep(pts[30]), top = Math.ceil(pts[30] / step) * step;
+  const x = y => L + (W - L - R) * y / 30, yy = v => T + (H - T - B) * (1 - v / top);
+  let g = "";
+  for (let v = 0; v <= top + 1e-6; v += step) g += `<line x1="${L}" x2="${W-R}" y1="${yy(v)}" y2="${yy(v)}" stroke="rgba(31,35,40,${v?0.08:0.3})"/><text x="${L-8}" y="${yy(v)+4}" text-anchor="end">${shortEur(v)}</text>`;
+  for (const t of [0,5,10,15,20,25,30]) g += `<text x="${x(t)}" y="${H-12}" text-anchor="middle">${t === 0 ? "An 0" : t}</text>`;
+  const seg = (a, b) => pts.slice(a, b + 1).map((v, i) => `L${x(a + i).toFixed(1)},${yy(v).toFixed(1)}`).join("");
+  g += `<path d="M${x(0)},${yy(0)}${seg(0, N)}L${x(N)},${yy(0)}Z" fill="rgba(242,92,5,.14)"/>`;
+  g += `<path d="M${x(N)},${yy(0)}${seg(N, 30)}L${x(30)},${yy(0)}Z" fill="rgba(242,92,5,.32)"/>`;
+  g += `<line x1="${x(N)}" x2="${x(N)}" y1="${T-8}" y2="${yy(0)}" stroke="rgba(31,35,40,.35)" stroke-dasharray="3 4"/>`;
+  g += `<text x="${x(N)-6}" y="${T+4}" text-anchor="end">Abonnement</text><text x="${x(N)+6}" y="${T+4}" style="fill:#F25C05;font-weight:600">Sans abonnement</text>`;
+  g += `<path d="M${x(0)},${yy(0)}${seg(0, 30)}" fill="none" stroke="#F25C05" stroke-width="2.5" stroke-linejoin="round"/>`;
+  g += `<circle cx="${x(N)}" cy="${yy(pts[N])}" r="4.5" fill="#fff" stroke="#F25C05" stroke-width="2"/>`;
+  g += `<circle cx="${x(30)}" cy="${yy(pts[30])}" r="5.5" fill="#F25C05"/>`;
+  g += `<text class="tot" x="${x(30)-10}" y="${yy(pts[30])-12}" text-anchor="end">${eur(pts[30])}</text>`;
+  $("#chart").innerHTML = g;
+}
+function updateSim(){
+  const B = +bill.value, N = +years.value, r = simulate(B, N);
+  bill.style.setProperty("--f", ((B - bill.min) / (bill.max - bill.min) * 100) + "%");
+  years.style.setProperty("--f", ((N - years.min) / (years.max - years.min) * 100) + "%");
+  $("#billOut").innerHTML = `${fmt.format(B)} <small>€ / mois</small>`;
+  $("#yearsOut").innerHTML = `${N} <small>ans</small>`;
+  const after = B * REF.after / REF.bill;   // -30 %, comme le dossier type
+  $("#bBefore").textContent = eur(B); $("#bAfter").textContent = eur(after);
+  $("#bPct").textContent = "-" + Math.round((1 - after / B) * 100) + " %";
+  $("#oSave").textContent = eur(r.save1); $("#oSub").textContent = eur(r.sub / 12);
+  $("#oNet").textContent = eur(r.net1); $("#oAfter").textContent = eur(r.after);
+  $("#oCum").textContent = eur(r.cumN); $("#oCumLbl").textContent = `cumulés sur les ${N} ans d'abonnement`;
+  $("#oCum30").textContent = eur(r.cum30);
+  drawChart(r.pts, N);
+}
+bill.addEventListener("input", updateSim); years.addEventListener("input", updateSim); updateSim();
 
 /* formulaire */
 const form = $("#lead"), done = $("#done");
